@@ -26,18 +26,19 @@ function s:BundlePlugins()
   endif
 endfunction
 
-function PluginLoader#Load() dict
-  call s:BundlePlugins()
+function s:LoadFileBrowserSettings()
   nmap <leader>n :NERDTreeToggle<CR>
   nmap <leader>nf :NERDTreeFind<CR>
   let NERDTreeQuitOnOpen=1
   let NERDTreeShowHidden=2
   let NERDTreeIgnore = [
-        \ 'tmp', '\.yardoc$', 'pkg', 'log', '\.map$', '\.swp$', '\.o$', '\.so$',
-        \ '\.class$', '\.pyc$', '\.pyo$', '\.gif$', '\.jpg$', '\.png$', '\.git',
-        \ '\.hg$', '\.svn$', '\.obj$', '\.ico$', '\.pyd$', '\.exe$', '\~$', '\.dll'
-        \ ]
+    \ 'tmp', '\.yardoc$', 'pkg', 'log', '\.map$', '\.swp$', '\.o$', '\.so$',
+    \ '\.class$', '\.pyc$', '\.pyo$', '\.gif$', '\.jpg$', '\.png$', '\.git',
+    \ '\.hg$', '\.svn$', '\.obj$', '\.ico$', '\.pyd$', '\.exe$', '\~$', '\.dll'
+  \ ]
+endfunction
 
+function s:LoadFileFinderSettings()
   let g:ctrlp_max_files = 10000
   let g:ctrlp_max_depth = 100
   let g:ctrlp_match_window_reversed = 0
@@ -45,7 +46,9 @@ function PluginLoader#Load() dict
     let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
     let g:ctrlp_use_caching = 0
   endif
+endfunction
 
+function s:LoadLineCommenterSettings()
   " Command and uncomment code easily
   " <leader>cc -- comment ragged style
   " <leader>cl -- comment aligned style
@@ -54,14 +57,18 @@ function PluginLoader#Load() dict
   let g:NERDRemoveExtraSpaces=1
   let g:NERDSpaceDelims=1
   let g:NERDCommentWholeLinesInVMode=2
+endfunction
 
+function s:LoadTabularizingSettings()
   nmap <leader>a= :Tabularize /=<CR>
   vmap <leader>a= :Tabularize /=<CR>
   nmap <leader>a: :Tabularize /:\zs<CR>
   vmap <leader>a: :Tabularize /:\zs<CR>
   nmap <leader>a, :Tabularize /,\zs<CR>
   vmap <leader>a, :Tabularize /,\zs<CR>
+endfunction
 
+function s:LoadSyntaxCheckingSettings()
   if exists('*getmatches')
     let g:is_posix                           = 1 " Syntax highlight shell scripts as per POSIX
     let g:syntastic_error_symbol             = '✗✗'
@@ -80,12 +87,27 @@ function PluginLoader#Load() dict
     let g:syntastic_sass_checkers            = ['sass']
     let g:syntastic_yaml_checkers            = ['jsyaml'] " npm install js-yaml
   endif
+endfunction
 
+function s:LoadWordMovementSettings()
   map <S-W> <Plug>CamelCaseMotion_w
   map <S-B> <Plug>CamelCaseMotion_b
   map <S-E> <Plug>CamelCaseMotion_e
+endfunction
 
+function s:LoadStatusBarSettings()
   let g:Powerline_symbols = 'fancy'
+endfunction
+
+function PluginLoader#Load() dict
+  call s:BundlePlugins()
+  call s:LoadFileBrowserSettings()
+  call s:LoadFileFinderSettings()
+  call s:LoadLineCommenterSettings()
+  call s:LoadTabularizingSettings()
+  call s:LoadSyntaxCheckingSettings()
+  call s:LoadWordMovementSettings()
+  call s:LoadStatusBarSettings()
   return
 endfunction PluginLoader#Load
 
