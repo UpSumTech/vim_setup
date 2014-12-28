@@ -39,6 +39,14 @@ function MappingLoader#Load() dict
   nmap <Leader>s <C-w>s
   nmap <Leader>v <C-w>v
 
+  " Mappings for tabs
+  nnoremap <leader>tn :tabnew<cr>
+  nnoremap <leader>to :tabonly<cr>
+  nnoremap <leader>tc :tabclose<cr>
+  nnoremap <leader>tm :tabmove
+  nnoremap <leader>t<leader> :tabnext
+  nnoremap <Leader>tl :LTab<CR>
+
   " Helpful mappings for editing
   nmap <leader>ew :e <C-R>=expand('%:h').'/'<cr>
   nmap <leader>es :sp <C-R>=expand('%:h').'/'<cr>
