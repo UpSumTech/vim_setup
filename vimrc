@@ -28,6 +28,14 @@ function s:LoadSettings()
   call settingLoader.load()
 endfunction
 
+function s:LoadCommands()
+  if filereadable(expand("~/.vim/CommandLoader.vim"))
+    source ~/.vim/CommandLoader.vim
+  endif
+  let commandLoader=CommandLoader#New()
+  call commandLoader.load()
+endfunction
+
 function s:LoadLanguageConfigs()
   let languageLoaders=[
     \ "CandJavaConfigLoader",
@@ -61,6 +69,7 @@ endfunction
 
 call s:LoadPlugins()
 call s:LoadSettings()
+call s:LoadCommands()
 call s:LoadLanguageConfigs()
 call s:LoadMappings()
 

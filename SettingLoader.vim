@@ -13,8 +13,12 @@ function SettingLoader#Load() dict
   set nowritebackup nobackup noswapfile                       " Do not create crazy backup/swap files
   set autowrite                                               " Automatically write before running commands
   set hlsearch incsearch ignorecase smartcase                 " Settings to highlight/search/step
+  set lazyredraw
+  set magic
   set mouse=a paste                                           " Do not copy line nos while copying to xterm and allow pasting from it seamlessly
   set showmatch                                               " Show the matching bracket
+  set noerrorbells
+  set novisualbell
   set matchpairs=(:),{:},[:],<:>                              " List of characters we expect in balanced pairs
   set wildmode=list:longest,full                              " Completion for wildchar in command mode
   set wildmenu

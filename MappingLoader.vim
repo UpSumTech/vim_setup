@@ -6,6 +6,12 @@ function MappingLoader#Load() dict
   " Make Y behave like other capitals
   map Y y$
 
+  " Close current buffer
+  nnoremap <leader>bd :BClose<CR>
+
+  " Toggle Quickfix window
+  nnoremap <leader>q :QfToggle<CR>
+
   " Mappings to toggle and clear search highlights
   nmap <leader>hs :set hlsearch! hlsearch?<CR>
   nmap <leader>hl :let @/ = ""<CR>
@@ -48,7 +54,7 @@ endfunction MappingLoader#Load
 
 function MappingLoader#New()
   let Retval = {
-    \ 'load' : function('MappingLoader#Load'),
-  \ }
+        \ 'load' : function('MappingLoader#Load'),
+        \ }
   return Retval
 endfunction MappingLoader#New
