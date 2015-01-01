@@ -66,7 +66,6 @@ function MappingLoader#Load() dict
   nmap <leader>es :sp <C-R>=expand('%:h').'/'<cr>
   nmap <leader>ev :vsp <C-R>=expand('%:h').'/'<cr>
   nmap <leader>et :tabe <C-R>=expand('%:h').'/'<cr>
-  nmap <leader>= <C-w>=
 
   " cd to the directory containing the file in the buffer
   nmap <silent> <leader>cd :lcd %:h<CR>
