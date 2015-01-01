@@ -54,22 +54,38 @@ function s:GotoLastTab()
   endif
 endfunction
 
-function! WinDo(command)
+function s:WinDo(command)
   let currentWindow = winnr()
   execute 'windo ' . a:command
   execute currentWindow . 'wincmd w'
 endfunction
 
-function! BufDo(command)
+function s:BufDo(command)
   let currentBuffer=bufnr("%")
   execute 'bufdo ' . a:command
   execute 'buffer ' . currentBuffer
 endfunction
 
-function! TabDo(command)
+function s:TabDo(command)
   let currentTab=tabpagenr()
   execute 'tabdo ' . a:command
   execute 'tabn ' . currentTab
+endfunction
+
+function s:RemoveTrailingSpaces()
+  let currentCursor = getpos(".")
+  if !&bin && &filetype !=# 'diff'
+    silent! %s/\s\+$//ge
+  endif
+  call setpos('.', currentCursor)
+endfunction
+
+function s:OpenBrowser()
+  let l:link = matchstr(getline('.'), 'http[s]\?:\/\/[\da-z\.-]\+\.[a-z]\{2,6\}[^ >,;]*')
+  if !empty(l:link)
+    execute "!open ".l:link
+    redraw!
+  endif
 endfunction
 
 function CommandLoader#Load() dict
@@ -77,13 +93,17 @@ function CommandLoader#Load() dict
   command! BClose call <SID>BufferClose()
   command! QfToggle call <SID>QuickfixToggle()
   command! LTab call <SID>GotoLastTab()
-  command! -nargs=+ -complete=command Windo call WinDo(<q-args>)
-  command! -nargs=+ -complete=command Bufdo call BufDo(<q-args>)
-  command! -nargs=+ -complete=command Tabdo call TabDo(<q-args>)
+  command! -nargs=+ -complete=command Windo call <SID>WinDo(<q-args>)
+  command! -nargs=+ -complete=command Bufdo call <SID>BufDo(<q-args>)
+  command! -nargs=+ -complete=command Tabdo call <SID>TabDo(<q-args>)
+  command! RTSpaces call <SID>RemoveTrailingSpaces()
+  command! OBrowser call <SID>OpenBrowser()
 
   " AutoCommands
   autocmd BufReadPost * call <SID>GotoLastEditLine()
   autocmd TabLeave * call <SID>MarkLastTab()
+  autocmd BufWritePre * :call <SID>RemoveTrailingSpaces()
+  autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en
 endfunction CommandLoader#Load
 
 function CommandLoader#New()

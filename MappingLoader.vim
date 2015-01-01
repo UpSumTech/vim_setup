@@ -19,6 +19,9 @@ function MappingLoader#Load() dict
   " format the entire file
   nmap <leader>fef gg=G
 
+  " open links in browser
+  nnoremap <leader>ob :OBrowser<CR>
+
   " Index ctags from any project, including those outside Rails
   map <leader>ct :!ctags -R .<CR>
 
