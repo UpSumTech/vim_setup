@@ -19,6 +19,17 @@ function MappingLoader#Load() dict
   " format the entire file
   nmap <leader>fef gg=G
 
+  " upper/lower word
+  nmap <leader>u mQviwU`Q
+  nmap <leader>l mQviwu`Q
+
+  " upper/lower first char of word
+  nmap <leader>U mQgewvU`Q
+  nmap <leader>L mQgewvu`Q
+
+  " find merge conflict markers
+  nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+
   " open links in browser
   nnoremap <leader>ob :OBrowser<CR>
 
@@ -50,11 +61,12 @@ function MappingLoader#Load() dict
   nnoremap <leader>t<leader> :tabnext
   nnoremap <Leader>tl :LTab<CR>
 
-  " Helpful mappings for editing
+  " Helpful mappings for windows
   nmap <leader>ew :e <C-R>=expand('%:h').'/'<cr>
   nmap <leader>es :sp <C-R>=expand('%:h').'/'<cr>
   nmap <leader>ev :vsp <C-R>=expand('%:h').'/'<cr>
   nmap <leader>et :tabe <C-R>=expand('%:h').'/'<cr>
+  nmap <leader>= <C-w>=
 
   " cd to the directory containing the file in the buffer
   nmap <silent> <leader>cd :lcd %:h<CR>
