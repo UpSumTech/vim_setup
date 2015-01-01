@@ -7,6 +7,7 @@ let g:plugins = [
   \ "\"jeetsukumaran\/vim-buffergator\"",
   \ "\"godlygeek\/tabular\"",
   \ "\"scrooloose\/syntastic\"",
+  \ "\"edsono\/vim-matchit\"",
   \ "\"bkad\/CamelCaseMotion\"",
   \ "\"tpope\/vim-surround\"",
   \ "\"Raimondi\/delimitMate\"",
