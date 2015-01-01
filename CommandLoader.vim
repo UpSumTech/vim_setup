@@ -103,7 +103,7 @@ function CommandLoader#Load() dict
   autocmd BufReadPost * call <SID>GotoLastEditLine()
   autocmd TabLeave * call <SID>MarkLastTab()
   autocmd BufWritePre * :call <SID>RemoveTrailingSpaces()
-  autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en
+  autocmd BufNewFile,BufRead *.org setlocal spell spelllang=en
 endfunction CommandLoader#Load
 
 function CommandLoader#New()
