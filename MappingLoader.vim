@@ -54,14 +54,14 @@ function MappingLoader#Load() dict
   nmap <Leader>v <C-w>v
 
   " Mappings for tabs
-  nnoremap <leader>tn :tabnew<cr>
-  nnoremap <leader>to :tabonly<cr>
-  nnoremap <leader>tc :tabclose<cr>
-  nnoremap <leader>tm :tabmove
-  nnoremap <leader>t<leader> :tabnext
-  nnoremap <Leader>tl :LTab<CR>
+  nnoremap <leader><tab>n :tabnew<cr>
+  nnoremap <leader><tab>o :tabonly<cr>
+  nnoremap <leader><tab>c :tabclose<cr>
+  nnoremap <leader><tab>m :tabmove
+  nnoremap <leader><tab><leader> :tabnext
+  nnoremap <Leader><tab>l :LastTab<CR>
 
-  " Helpful mappings for windows
+  " Helpful mappings for opening windows
   nmap <leader>ew :e <C-R>=expand('%:h').'/'<cr>
   nmap <leader>es :sp <C-R>=expand('%:h').'/'<cr>
   nmap <leader>ev :vsp <C-R>=expand('%:h').'/'<cr>

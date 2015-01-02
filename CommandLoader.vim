@@ -92,7 +92,7 @@ function CommandLoader#Load() dict
   " Commands
   command! BClose call <SID>BufferClose()
   command! QfToggle call <SID>QuickfixToggle()
-  command! LTab call <SID>GotoLastTab()
+  command! LastTab call <SID>GotoLastTab()
   command! -nargs=+ -complete=command Windo call <SID>WinDo(<q-args>)
   command! -nargs=+ -complete=command Bufdo call <SID>BufDo(<q-args>)
   command! -nargs=+ -complete=command Tabdo call <SID>TabDo(<q-args>)
