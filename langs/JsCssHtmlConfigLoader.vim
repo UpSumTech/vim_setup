@@ -1,4 +1,4 @@
-function language#JsCssHtmlConfigLoader#Load() dict
+function langs#JsCssHtmlConfigLoader#Load() dict
   augroup JS_Html_Css_JSON
     autocmd!
 
@@ -16,11 +16,11 @@ function language#JsCssHtmlConfigLoader#Load() dict
     autocmd FileType html,markdown nested setlocal omnifunc=htmlcomplete#CompleteTags
     autocmd FileType javascript    nested setlocal omnifunc=javascriptcomplete#CompleteJS
   augroup END
-endfunction language#JsCssHtmlConfigLoader#Load
+endfunction langs#JsCssHtmlConfigLoader#Load
 
-function language#JsCssHtmlConfigLoader#New()
+function langs#JsCssHtmlConfigLoader#New()
   let Retval = {
-    \ 'load' : function('language#JsCssHtmlConfigLoader#Load'),
+    \ 'load' : function('langs#JsCssHtmlConfigLoader#Load'),
   \ }
   return Retval
-endfunction language#JsCssHtmlConfigLoader#New
+endfunction langs#JsCssHtmlConfigLoader#New

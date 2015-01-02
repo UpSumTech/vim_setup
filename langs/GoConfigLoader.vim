@@ -1,4 +1,4 @@
-function language#GoConfigLoader#Load() dict
+function langs#GoConfigLoader#Load() dict
   augroup Go
     autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
     autocmd FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
@@ -6,11 +6,11 @@ function language#GoConfigLoader#Load() dict
     autocmd FileType go nmap <leader>gb <Plug>(go-build)
     autocmd FileType go nmap <leader>gt <Plug>(go-test)
   augroup END
-endfunction language#GoConfigLoader#Load
+endfunction langs#GoConfigLoader#Load
 
-function language#GoConfigLoader#New()
+function langs#GoConfigLoader#New()
   let Retval = {
-    \ 'load' : function('language#GoConfigLoader#Load'),
+    \ 'load' : function('langs#GoConfigLoader#Load'),
   \ }
   return Retval
-endfunction language#GoConfigLoader#New
+endfunction langs#GoConfigLoader#New

@@ -46,10 +46,10 @@ function s:LoadLanguageConfigs()
   \ ]
 
   for languageLoader in languageLoaders
-    let fileName=expand("~/.vim/language/".languageLoader.".vim")
+    let fileName=expand("~/.vim/langs/".languageLoader.".vim")
     if filereadable(fileName)
       :execute 'source '.fnameescape(fileName)
-      let LoaderFn=function('language#'.languageLoader.'#New')
+      let LoaderFn=function('langs#'.languageLoader.'#New')
       let loader=LoaderFn()
       call loader.load()
       unlet loader

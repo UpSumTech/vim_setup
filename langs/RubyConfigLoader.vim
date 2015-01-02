@@ -1,4 +1,4 @@
-function language#RubyConfigLoader#Load() dict
+function langs#RubyConfigLoader#Load() dict
   augroup Ruby
     autocmd!
     autocmd FileType ruby,eruby                                              nested setlocal cinwords=do,if,elsif,else,try,def,class
@@ -14,11 +14,11 @@ function language#RubyConfigLoader#Load() dict
     autocmd BufNewFile,BufRead *.txt.erb                                     nested setlocal filetype=eruby.text
     autocmd FileType ruby,eruby                                              nested setlocal omnifunc=rubycomplete#Complete
   augroup END
-endfunction language#RubyConfigLoader#Load
+endfunction langs#RubyConfigLoader#Load
 
-function language#RubyConfigLoader#New()
+function langs#RubyConfigLoader#New()
   let Retval = {
-    \ 'load' : function('language#RubyConfigLoader#Load'),
+    \ 'load' : function('langs#RubyConfigLoader#Load'),
   \ }
   return Retval
-endfunction language#RubyConfigLoader#New
+endfunction langs#RubyConfigLoader#New
