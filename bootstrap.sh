@@ -2,10 +2,6 @@
 
 target="${HOME}/Code/vim_setup_example"
 
-fullSrcDir() {
-  cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd
-}
-
 die() {
   echo "${@}"
   exit 1
@@ -33,7 +29,7 @@ GetPlugins() {
   cd "bundle" && \
     while read -r line; do
       git clone "$(echo "$line" | cut -d "=" -f2)"
-    done < plugins && \
+    done < "$target/plugins" && \
     cd ..
 }
 
