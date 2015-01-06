@@ -7,27 +7,21 @@ indent_style = tab
 end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
+indent_size = 2
 
 [**.js]
 charset = utf-8
-space_after_control_statements = false
-space_after_anonymous_functions = false
 
 [*.rb]
 charset = utf-8
-space_after_control_statements = true
 
 [**.css]
 indent_style = space
-indent_size = 2
-insert_final_newline = true
 
 [**.html]
 indent_style = space
-indent_size = 2
 max_char = 80
 brace_style = expand
 
 [{package.json,.travis.yml}]
 indent_style = space
-indent_size = 2
