@@ -1,6 +1,6 @@
 #!/bin/bash
 
-target="${HOME}/Code/vim_setup_example"
+target="${HOME}/.vim"
 
 die() {
   echo "${@}"
