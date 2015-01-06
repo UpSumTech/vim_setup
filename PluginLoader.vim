@@ -32,10 +32,10 @@ function s:LoadFileBrowserSettings()
   let NERDTreeQuitOnOpen=1
   let NERDTreeShowHidden=2
   let NERDTreeIgnore = [
-    \ 'tmp', '\.yardoc$', 'pkg', 'log', '\.map$', '\.swp$', '\.o$', '\.so$',
-    \ '\.class$', '\.pyc$', '\.pyo$', '\.gif$', '\.jpg$', '\.png$', '\.git',
-    \ '\.hg$', '\.svn$', '\.obj$', '\.ico$', '\.pyd$', '\.exe$', '\~$', '\.dll'
-  \ ]
+        \ 'tmp', '\.yardoc$', 'pkg', 'log', '\.map$', '\.swp$', '\.o$', '\.so$',
+        \ '\.class$', '\.pyc$', '\.pyo$', '\.gif$', '\.jpg$', '\.png$', '\.git',
+        \ '\.hg$', '\.svn$', '\.obj$', '\.ico$', '\.pyd$', '\.exe$', '\~$', '\.dll'
+        \ ]
 endfunction
 
 function s:LoadFileFinderSettings()
@@ -68,6 +68,27 @@ function s:LoadTabularizingSettings()
   vmap <leader>a, :Tabularize /,\zs<CR>
 endfunction
 
+function s:ToggleSyntaxCheck()
+  let l:quickfixWindow = filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"')
+  if !(exists('g:is_location_list_open'))
+    let g:is_location_list_open = 0
+  endif
+
+  if empty(l:quickfixWindow) && !g:is_location_list_open
+    let l:location_list_return_window = winnr()
+    call SyntasticToggleMode()
+    call SyntasticCheck()
+    let g:is_location_list_open = 1
+    execute l:location_list_return_window . "wincmd w"
+    lopen
+  else
+    call SyntasticReset()
+    call SyntasticToggleMode()
+    let g:is_location_list_open = 0
+    lclose
+  endif
+endfunction
+
 function s:LoadSyntaxCheckingSettings()
   if exists('*getmatches')
     let g:is_posix                           = 1 " Syntax highlight shell scripts as per POSIX
@@ -76,7 +97,7 @@ function s:LoadSyntaxCheckingSettings()
     let g:syntastic_style_error_symbol       = '✗'
     let g:syntastic_style_warning_symbol     = '⚠'
     let g:syntastic_always_populate_loc_list = 1 " Always open the location-list
-    let g:syntastic_auto_loc_list            = 1 " Close the location-list when errors are gone
+    let g:syntastic_auto_loc_list            = 2 " Close the location-list when errors are gone
     let g:syntastic_loc_list_height          = 5
     let g:syntastic_sh_checkers              = ['shellcheck', 'checkbashisms', 'sh']
     let g:syntastic_sh_checkbashisms_args    = '-x'
@@ -86,6 +107,14 @@ function s:LoadSyntaxCheckingSettings()
     let g:syntastic_scss_checkers            = ['sass']
     let g:syntastic_sass_checkers            = ['sass']
     let g:syntastic_yaml_checkers            = ['jsyaml'] " npm install js-yaml
+    let g:syntastic_mode_map                 = {
+          \ "mode": "passive",
+          \ "active_filetypes": [],
+          \ "passive_filetypes": []
+          \ }
+
+    command! TSyntaxCheck call <SID>ToggleSyntaxCheck()
+    nnoremap <leader><space> :TSyntaxCheck<CR>
   endif
 endfunction
 
@@ -122,10 +151,10 @@ endfunction PluginLoader#AfterLoad
 
 function PluginLoader#New()
   let Retval = {
-    \ 'install'    : function('PluginLoader#Install'),
-    \ 'beforeLoad' : function('PluginLoader#BeforeLoad'),
-    \ 'load'       : function('PluginLoader#Load'),
-    \ 'afterLoad'  : function('PluginLoader#AfterLoad'),
-  \ }
+        \ 'install'    : function('PluginLoader#Install'),
+        \ 'beforeLoad' : function('PluginLoader#BeforeLoad'),
+        \ 'load'       : function('PluginLoader#Load'),
+        \ 'afterLoad'  : function('PluginLoader#AfterLoad'),
+        \ }
   return Retval
 endfunction PluginLoader#New
