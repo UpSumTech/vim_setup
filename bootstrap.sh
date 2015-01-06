@@ -56,22 +56,6 @@ GetPlugins() {
   done < "$target/plugins"
 }
 
-GeneratePluginsVimFile() {
-  local fileName="$target/plugins.vim"
-  local pluginName
-  if [[ -e "$fileName" ]]; then
-    rm "$fileName"
-  fi
-  touch "$fileName"
-  echo 'let g:plugins = [' >> "$fileName"
-
-  while read -r line; do
-    pluginName="$(echo "$line" | cut -d "=" -f1 | sed -e 's#/#\\/#g')"
-    echo '  \ "\"'"$pluginName"'\"",' >> "$fileName"
-  done < "plugins"
-  echo '\ ]' >> "$fileName"
-}
-
 main() {
   MoveOldVimFilesAndDirs
   CopySetup
@@ -79,8 +63,7 @@ main() {
   cd "$target"
   GetPluginManager
   GetPlugins
-  GeneratePluginsVimFile
-  # make || die "Make failed"
+  make || die "Build failed"
 }
 
 main

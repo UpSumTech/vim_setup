@@ -2,8 +2,7 @@ all = CommandLoader.vim MappingLoader.vim PluginLoader.vim SettingLoader.vim vim
 TARGET = $$HOME/Code/vim_setup_example
 
 all: $(all)
-	./bootstrap.sh
-	cd $(TARGET)
+	./build.sh
 
 clean:
 	$(RM) -rf $(TARGET)
