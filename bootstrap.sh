@@ -1,6 +1,7 @@
 #!/bin/bash
 
 target="${HOME}/Code/vim_setup_example"
+pluginDir="$target/bundle"
 
 die() {
   echo "${@}"
@@ -11,9 +12,17 @@ MoveOldVimFilesAndDirs() {
   local paths=("$target" "${HOME}/.vimrc")
   for file in "${paths[@]}"; do
     if [[ -e $file ]]; then
+      if [[ -d "${file}.old" ]]; then
+        rm -rf "${file}.old"
+      fi
       mv "${file}" "${file}.old" || die "Failed to move ${file} to ${file}.old"
     fi
   done
+}
+
+CopyOldPlugins() {
+  [[ -d "${target}.old/bundle" ]] \
+    && cp -r "${target}.old/bundle" "$pluginDir"
 }
 
 CopySetup() {
@@ -21,23 +30,56 @@ CopySetup() {
     || die "Could not clone repo"
 }
 
-GetPlugins() {
-  if [[ ! -d "$target/bundle" ]]; then
-    mkdir "$target/bundle"
+GetPluginManager() {
+  if [[ ! -d "$pluginDir/neobundle.vim" ]]; then
+    git clone "git@github.com:Shougo/neobundle.vim" "$pluginDir/neobundle.vim" \
+      || die "Could not clone plugin manager"
+  else
+    echo "$(cd "$pluginDir/neobundle.vim"; git pull)"
   fi
+}
 
-  cd "bundle" && \
-    while read -r line; do
-      git clone "$(echo "$line" | cut -d "=" -f2)"
-    done < "$target/plugins" && \
-    cd ..
+GetPlugins() {
+  local githubUrl repoName
+  if [[ ! -d "$pluginDir" ]]; then
+    mkdir -p "$pluginDir"
+  fi
+  while read -r line; do
+    githubUrl="$(echo "$line" | cut -d "=" -f2)"
+    repoName="$(echo "$githubUrl" | cut -d "/" -f2)"
+    if [[ ! -d "$pluginDir/$repoName" ]]; then
+      git clone "$githubUrl" "$pluginDir/$repoName" \
+        || die "Could not clone plugin $repoName"
+    else
+      echo "$(cd "$pluginDir/$repoName"; git pull origin master)"
+    fi
+  done < "$target/plugins"
+}
+
+GeneratePluginsVimFile() {
+  local fileName="$target/plugins.vim"
+  local pluginName
+  if [[ -e "$fileName" ]]; then
+    rm "$fileName"
+  fi
+  touch "$fileName"
+  echo 'let g:plugins = [' >> "$fileName"
+
+  while read -r line; do
+    pluginName="$(echo "$line" | cut -d "=" -f1 | sed -e 's#/#\\/#g')"
+    echo '  \ "\"'"$pluginName"'\"",' >> "$fileName"
+  done < "plugins"
+  echo '\ ]' >> "$fileName"
 }
 
 main() {
   MoveOldVimFilesAndDirs
   CopySetup
+  CopyOldPlugins
   cd "$target"
+  GetPluginManager
   GetPlugins
+  GeneratePluginsVimFile
   # make || die "Make failed"
 }
 
