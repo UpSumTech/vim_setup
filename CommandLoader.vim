@@ -88,6 +88,20 @@ function s:OpenBrowser()
   endif
 endfunction
 
+function s:CopyLineToClipboard()
+  execute '.w !pbcopy'
+endfunction
+
+function s:PasteLineFromClipboard()
+  if &paste
+    execute 'r !pbpaste'
+  else
+    set paste
+    execute ":r !pbpaste"
+    set nopaste
+  endif
+endfunction
+
 function CommandLoader#Load() dict
   " Commands
   command! BClose call <SID>BufferClose()
@@ -98,6 +112,8 @@ function CommandLoader#Load() dict
   command! -nargs=+ -complete=command Tabdo call <SID>TabDo(<q-args>)
   command! RTSpaces call <SID>RemoveTrailingSpaces()
   command! OBrowser call <SID>OpenBrowser()
+  command! PbLineCopy call <SID>CopyLineToClipboard()
+  command! PbLinePaste call <SID>PasteLineFromClipboard()
 
   " AutoCommands
   autocmd BufReadPost * call <SID>GotoLastEditLine()

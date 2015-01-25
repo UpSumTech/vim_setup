@@ -72,6 +72,10 @@ function MappingLoader#Load() dict
 
   " Create the directory containing the file in the buffer
   nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
+
+  " Create mappings for copy/paste from clipboard
+  nnoremap <leader>lc :PbLineCopy<CR>
+  nnoremap <leader>lp :PbLinePaste<CR>
 endfunction MappingLoader#Load
 
 function MappingLoader#New()
