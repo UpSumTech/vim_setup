@@ -51,7 +51,7 @@ GetPlugins() {
       git clone "$githubUrl" "$pluginDir/$repoName" \
         || die "Could not clone plugin $repoName"
     else
-      echo "$(cd "$pluginDir/$repoName"; git pull origin master)"
+      echo "$(cd "$pluginDir/$repoName"; git pull)"
     fi
   done < "$target/plugins"
 }
