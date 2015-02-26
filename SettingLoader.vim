@@ -26,7 +26,6 @@ function SettingLoader#Load() dict
   set completeopt=menu,longest
   set omnifunc=syntaxcomplete#Complete                        " This is overriden by syntax plugins.
   set laststatus=2                                            " TODO: Dont know wat this does
-  set viminfo^=%                                              " Remember info of open buffers on close
 
   set listchars=""          " Reset the listchars
   set listchars+=tab:\ \    " List tab as 2 spaces
