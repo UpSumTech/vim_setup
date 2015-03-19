@@ -55,6 +55,14 @@ function SettingLoader#Load() dict
   let g:netrw_retmap         = 1
   let g:netrw_silent         = 1
   let g:netrw_special_syntax = 1
+
+  if executable("psc")
+    let g:purescript_indent_if = 3
+    let g:purescript_indent_case = 5
+    let g:purescript_indent_let = 4
+    let g:purescript_indent_where = 6
+    let g:purescript_indent_do = 3
+  endif
 endfunction SettingLoader#Load
 
 function SettingLoader#New()

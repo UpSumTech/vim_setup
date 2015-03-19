@@ -32,3 +32,4 @@ kchmck/vim-coffee-script=git@github.com:kchmck/vim-coffee-script.git
 digitaltoad/vim-jade=git@github.com:digitaltoad/vim-jade.git
 Lokaltog/vim-powerline=git@github.com:Lokaltog/vim-powerline.git
 altercation/vim-colors-solarized=git@github.com:altercation/vim-colors-solarized.git
+raichoo/purescript-vim=git@github.com:raichoo/purescript-vim.git
