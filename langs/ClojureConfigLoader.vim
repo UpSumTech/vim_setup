@@ -10,6 +10,10 @@ function langs#ClojureConfigLoader#Load() dict
       autocmd FileType clojure :RainbowParenthesesLoadSquare
       autocmd FileType clojure :RainbowParenthesesLoadBraces
     endif
+
+    if exists("g:loaded_dispatch")
+      autocmd FileType clojure :Start lein repl
+    endif
   augroup END
 endfunction langs#ClojureConfigLoader#Load
 

@@ -35,5 +35,7 @@ altercation/vim-colors-solarized=git@github.com:altercation/vim-colors-solarized
 raichoo/purescript-vim=git@github.com:raichoo/purescript-vim.git
 guns/vim-clojure-static=git@github.com:guns/vim-clojure-static.git
 kien/rainbow_parentheses.vim=git@github.com:kien/rainbow_parentheses.vim.git
+tpope/vim-salve=git@github.com:tpope/vim-salve.git
+tpope/vim-dispatch=git@github.com:tpope/vim-dispatch.git
 tpope/vim-fireplace=git@github.com:tpope/vim-fireplace.git
 guns/vim-clojure-highlight=git@github.com:guns/vim-clojure-highlight.git
