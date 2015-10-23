@@ -8,7 +8,7 @@ ALL_FILES = CommandLoader.vim \
 TARGET = $$HOME/Code/vim_setup_example
 
 all: $(ALL_FILES)
-	./build.sh
+	@./build.sh
 
 clean:
 	$(RM) -rf $(TARGET)
