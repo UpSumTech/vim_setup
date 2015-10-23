@@ -43,6 +43,7 @@ function s:LoadLanguageConfigs()
     \ "JsCssHtmlConfigLoader",
     \ "PythonConfigLoader",
     \ "RubyConfigLoader",
+    \ "ClojureConfigLoader",
   \ ]
 
   for languageLoader in languageLoaders
