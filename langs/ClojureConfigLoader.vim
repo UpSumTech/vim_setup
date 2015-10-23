@@ -4,16 +4,12 @@ function langs#ClojureConfigLoader#Load() dict
 
     autocmd BufNewFile,BufRead *.clj,*.cljs,*.cljc nested setlocal filetype=clojure
 
-    if exists("g:rbpt_colorpairs")
-      autocmd FileType clojure :RainbowParenthesesToggle
-      autocmd FileType clojure :RainbowParenthesesLoadRound
-      autocmd FileType clojure :RainbowParenthesesLoadSquare
-      autocmd FileType clojure :RainbowParenthesesLoadBraces
-    endif
+    autocmd FileType clojure :RainbowParenthesesToggle
+    autocmd FileType clojure :RainbowParenthesesLoadRound
+    autocmd FileType clojure :RainbowParenthesesLoadSquare
+    autocmd FileType clojure :RainbowParenthesesLoadBraces
 
-    if exists("g:loaded_dispatch")
-      autocmd FileType clojure :Start lein repl
-    endif
+    autocmd FileType clojure :Start! lein repl
   augroup END
 endfunction langs#ClojureConfigLoader#Load
 
