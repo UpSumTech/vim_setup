@@ -1,7 +1,12 @@
-all = CommandLoader.vim MappingLoader.vim PluginLoader.vim SettingLoader.vim vimrc
+ALL_FILES = CommandLoader.vim \
+	MappingLoader.vim \
+	PluginLoader.vim \
+	SettingLoader.vim \
+	vimrc
+
 TARGET = $$HOME/Code/vim_setup_example
 
-all: $(all)
+all: $(ALL_FILES)
 	./build.sh
 
 clean:
