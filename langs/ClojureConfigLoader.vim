@@ -8,8 +8,6 @@ function langs#ClojureConfigLoader#Load() dict
     autocmd FileType clojure :RainbowParenthesesLoadRound
     autocmd FileType clojure :RainbowParenthesesLoadSquare
     autocmd FileType clojure :RainbowParenthesesLoadBraces
-
-    autocmd FileType clojure :OpenConsole
   augroup END
 endfunction langs#ClojureConfigLoader#Load
 

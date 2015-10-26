@@ -76,6 +76,10 @@ function MappingLoader#Load() dict
   " Create mappings for copy/paste from clipboard
   nnoremap <leader>lc :PbLineCopy<CR>
   nnoremap <leader>lp :PbLinePaste<CR>
+
+  " Create mappings for opening console
+  nnoremap <leader>po :OpenConsole<CR><CR>
+  nnoremap <leader>pc :CloseConsole<CR><CR>
 endfunction MappingLoader#Load
 
 function MappingLoader#New()

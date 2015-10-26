@@ -103,12 +103,27 @@ function s:PasteLineFromClipboard()
 endfunction
 
 function s:OpenConsoleOnTmux()
-  let tmux_session = system('tmux display-message -p '.shellescape('"#S"'))
-  if executable('tmux') && !empty(''.tmux_session)
-    execute '!tmux split-window -v -p 15 -t '.tmux_session.':0'
-  else
-    return 0
+  if executable('tmux')
+    if !exists('g:current_tmux_session') && !exists('g:vim_tmux_window')
+      let g:current_tmux_session = system('tmux display-message -p '.shellescape('"#{session_id}"'))
+      let g:vim_tmux_window = system('tmux display-message -p '.shellescape('"#{window_id}"'))
+      let g:vim_tmux_pane = system('tmux display-message -p '.shellescape('"#{pane_id}"'))
+    endif
+
+    if !exists('g:vim_tmux_console_pane')
+      let g:vim_tmux_console_pane = 1
+      execute '!tmux split-window -d -v -p 15 -t '.g:vim_tmux_window
+    endif
   endif
+endfunction
+
+function s:CloseConsoleOnTmux()
+  if executable('tmux')
+    if exists('g:vim_tmux_console_pane')
+      execute '!tmux kill-pane -t '.g:vim_tmux_console_pane
+      unlet g:vim_tmux_console_pane
+    end
+  end
 endfunction
 
 function CommandLoader#Load() dict
@@ -124,6 +139,7 @@ function CommandLoader#Load() dict
   command! PbLineCopy call <SID>CopyLineToClipboard()
   command! PbLinePaste call <SID>PasteLineFromClipboard()
   command! OpenConsole call <SID>OpenConsoleOnTmux()
+  command! CloseConsole call <SID>CloseConsoleOnTmux()
 
   " AutoCommands
   autocmd BufReadPost * call <SID>GotoLastEditLine()
