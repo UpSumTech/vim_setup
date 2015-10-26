@@ -9,7 +9,7 @@ function langs#ClojureConfigLoader#Load() dict
     autocmd FileType clojure :RainbowParenthesesLoadSquare
     autocmd FileType clojure :RainbowParenthesesLoadBraces
 
-    autocmd FileType clojure :Start! lein repl
+    autocmd FileType clojure :OpenConsole
   augroup END
 endfunction langs#ClojureConfigLoader#Load
 

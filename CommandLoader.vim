@@ -102,6 +102,15 @@ function s:PasteLineFromClipboard()
   endif
 endfunction
 
+function s:OpenConsoleOnTmux()
+  let tmux_session = system('tmux display-message -p '.shellescape('"#S"'))
+  if executable('tmux') && !empty(''.tmux_session)
+    execute '!tmux split-window -v -p 15 -t '.tmux_session.':0'
+  else
+    return 0
+  endif
+endfunction
+
 function CommandLoader#Load() dict
   " Commands
   command! BClose call <SID>BufferClose()
@@ -114,6 +123,7 @@ function CommandLoader#Load() dict
   command! OBrowser call <SID>OpenBrowser()
   command! PbLineCopy call <SID>CopyLineToClipboard()
   command! PbLinePaste call <SID>PasteLineFromClipboard()
+  command! OpenConsole call <SID>OpenConsoleOnTmux()
 
   " AutoCommands
   autocmd BufReadPost * call <SID>GotoLastEditLine()
