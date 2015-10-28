@@ -1,4 +1,5 @@
 function SettingLoader#Load() dict
+  set shell=/bin/bash                                         " Set the shell to use for git
   set modelines=0                                             " Dont allow file specific vim config
   set clipboard=unnamed                                       " Allow yank/delete etc to *
   set encoding=utf-8                                          " Allow utf-8
@@ -25,7 +26,8 @@ function SettingLoader#Load() dict
   set background=dark
   set completeopt=menu,longest
   set omnifunc=syntaxcomplete#Complete                        " This is overriden by syntax plugins.
-  set laststatus=2                                            " TODO: Dont know wat this does
+  set laststatus=2                                            " Always show the status line
+  set history=20                                              " Remember the last 20 commands
 
   set listchars=""          " Reset the listchars
   set listchars+=tab:\ \    " List tab as 2 spaces
