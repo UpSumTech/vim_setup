@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 target="${HOME}/.vim"
 
@@ -18,7 +17,6 @@ main() {
   fi
   touch "$fileName"
   echo 'let g:plugins = [' >> "$fileName"
-
   while read -r line; do
     pluginName="$(echo "$line" | cut -d "=" -f1 | sed -e 's#/#\\/#g')"
     echo '  \ "\"'"$pluginName"'\"",' >> "$fileName"

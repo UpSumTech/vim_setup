@@ -2,6 +2,11 @@
 
 target="${HOME}/.vim"
 pluginDir="$target/bundle"
+ftPluginDir="$target/ftplugin"
+syntaxPluginDir="$target/syntax"
+compilerPluginDir="$target/compiler"
+indentPluginDir="$target/indent"
+omniCompletionPluginDir="$target/omnicompletion"
 
 die() {
   echo "${@}"
@@ -46,7 +51,7 @@ GetPlugins() {
   fi
   while read -r line; do
     githubUrl="$(echo "$line" | cut -d "=" -f2)"
-    repoName="$(echo "$githubUrl" | cut -d "/" -f2)"
+    repoName="$( echo "$githubUrl" | cut -d "/" -f2 | cut -d '.' -f1 )"
     if [[ ! -d "$pluginDir/$repoName" ]]; then
       git clone "$githubUrl" "$pluginDir/$repoName" \
         || die "Could not clone plugin $repoName"
@@ -56,6 +61,38 @@ GetPlugins() {
   done < "$target/plugins"
 }
 
+CreateFtPlugins() {
+  [[ -d "$ftPluginDir" ]] || mkdir "$ftPluginDir"
+  cp "$pluginDir/vim-ruby/ftplugin/ruby.vim" "$ftPluginDir/ruby.vim"
+  cp "$pluginDir/vim-ruby/ftplugin/eruby.vim" "$ftPluginDir/eruby.vim"
+}
+
+CreateSyntaxPlugins() {
+  [[ -d "$syntaxPluginDir" ]] || mkdir "$syntaxPluginDir"
+  cp "$pluginDir/vim-ruby/syntax/ruby.vim" "$syntaxPluginDir/ruby.vim"
+  cp "$pluginDir/vim-ruby/syntax/eruby.vim" "$syntaxPluginDir/eruby.vim"
+}
+
+CreateCompilerPlugins() {
+  [[ -d "$compilerPluginDir" ]] || mkdir "$compilerPluginDir"
+  cp "$pluginDir/vim-ruby/compiler/ruby.vim" "$compilerPluginDir/ruby.vim"
+  cp "$pluginDir/vim-ruby/compiler/eruby.vim" "$compilerPluginDir/eruby.vim"
+  cp "$pluginDir/vim-ruby/compiler/rake.vim" "$compilerPluginDir/rake.vim"
+  cp "$pluginDir/vim-ruby/compiler/rspec.vim" "$compilerPluginDir/rspec.vim"
+  cp "$pluginDir/vim-ruby/compiler/rubyunit.vim" "$compilerPluginDir/rubyunit.vim"
+}
+
+CreateIndentPlugins() {
+  [[ -d "$indentPluginDir" ]] || mkdir "$indentPluginDir"
+  cp "$pluginDir/vim-ruby/indent/ruby.vim" "$indentPluginDir/ruby.vim"
+  cp "$pluginDir/vim-ruby/indent/eruby.vim" "$indentPluginDir/eruby.vim"
+}
+
+CreateOmniCompletionPlugins() {
+  [[ -d "$omniCompletionPluginDir" ]] || mkdir "$omniCompletionPluginDir"
+  cp "$pluginDir/vim-ruby/autoload/rubycomplete.vim" "$omniCompletionPluginDir/rubycomplete.vim"
+}
+
 main() {
   MoveOldVimFilesAndDirs
   CopySetup
@@ -63,6 +100,11 @@ main() {
   cd "$target"
   GetPluginManager
   GetPlugins
+  CreateFtPlugins
+  CreateSyntaxPlugins
+  CreateCompilerPlugins
+  CreateIndentPlugins
+  CreateOmniCompletionPlugins
   make || die "Build failed"
 }
 

@@ -20,6 +20,36 @@ function s:LoadPlugins()
   call pluginLoader.afterLoad()
 endfunction
 
+function s:LoadFtPlugins()
+  for filename in split(glob('~/.vim/ftplugin/*.vim'), '\n')
+    :execute 'source '.filename
+  endfor
+endfunction
+
+function s:LoadSyntaxPlugins()
+  for filename in split(glob('~/.vim/syntax/*.vim'), '\n')
+    :execute 'source '.filename
+  endfor
+endfunction
+
+function s:LoadCompilerPlugins()
+  for filename in split(glob('~/.vim/compiler/*.vim'), '\n')
+    :execute 'source '.filename
+  endfor
+endfunction
+
+function s:LoadIndentPlugins()
+  for filename in split(glob('~/.vim/indent/*.vim'), '\n')
+    :execute 'source '.filename
+  endfor
+endfunction
+
+function s:LoadOmniCompletionPlugins()
+  for filename in split(glob('~/.vim/omnicompletion/*.vim'), '\n')
+    :execute 'source '.filename
+  endfor
+endfunction
+
 function s:LoadSettings()
   if filereadable(expand("~/.vim/SettingLoader.vim"))
     source ~/.vim/SettingLoader.vim
@@ -69,6 +99,11 @@ function s:LoadMappings()
 endfunction
 
 call s:LoadPlugins()
+call s:LoadFtPlugins()
+call s:LoadSyntaxPlugins()
+call s:LoadCompilerPlugins()
+call s:LoadIndentPlugins()
+call s:LoadOmniCompletionPlugins()
 call s:LoadSettings()
 call s:LoadCommands()
 call s:LoadLanguageConfigs()
