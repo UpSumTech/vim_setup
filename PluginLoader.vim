@@ -128,6 +128,15 @@ function s:LoadStatusBarSettings()
   let g:Powerline_symbols = 'fancy'
 endfunction
 
+function s:LoadGitGutterSettings()
+  autocmd BufRead * :GitGutterLineHighlightsEnable
+  let g:gitgutter_sign_column_always = 1 " Always display the signs column
+  let g:gitgutter_max_signs = 200  " Max changes to show in a buffer
+  let g:gitgutter_diff_args = '-w' " Ignores white spaces on git diff
+  nmap ]h <Plug>GitGutterNextHunk
+  nmap [h <Plug>GitGutterPrevHunk
+endfunction
+
 function PluginLoader#Load() dict
   call s:BundlePlugins()
   call s:LoadFileBrowserSettings()
@@ -137,6 +146,7 @@ function PluginLoader#Load() dict
   call s:LoadSyntaxCheckingSettings()
   call s:LoadWordMovementSettings()
   call s:LoadStatusBarSettings()
+  call s:LoadGitGutterSettings()
   return
 endfunction PluginLoader#Load
 
