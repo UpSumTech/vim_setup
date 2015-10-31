@@ -80,6 +80,9 @@ function MappingLoader#Load() dict
   " Create mappings for opening console
   nnoremap <leader>po :OpenConsole<CR><CR>
   nnoremap <leader>pc :CloseConsole<CR><CR>
+
+  " Search word under cursor
+  nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 endfunction MappingLoader#Load
 
 function MappingLoader#New()
