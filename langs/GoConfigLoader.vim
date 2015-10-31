@@ -1,10 +1,8 @@
 function langs#GoConfigLoader#Load() dict
   augroup Go
-    autocmd FileType go nmap <Leader>gd <Plug>(go-doc)
-    autocmd FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-    autocmd FileType go nmap <leader>gr <Plug>(go-run)
-    autocmd FileType go nmap <leader>gb <Plug>(go-build)
-    autocmd FileType go nmap <leader>gt <Plug>(go-test)
+    autocmd FileType go nmap <leader><S>gr <Plug>(go-run)
+    autocmd FileType go nmap <leader><S>gb <Plug>(go-build)
+    autocmd FileType go nmap <leader><S>gt <Plug>(go-test)
   augroup END
 endfunction langs#GoConfigLoader#Load
 

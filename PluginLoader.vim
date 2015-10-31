@@ -129,12 +129,18 @@ function s:LoadStatusBarSettings()
 endfunction
 
 function s:LoadGitGutterSettings()
-  autocmd BufRead * :GitGutterLineHighlightsEnable
   let g:gitgutter_sign_column_always = 1 " Always display the signs column
   let g:gitgutter_max_signs = 200  " Max changes to show in a buffer
   let g:gitgutter_diff_args = '-w' " Ignores white spaces on git diff
-  nmap ]h <Plug>GitGutterNextHunk
-  nmap [h <Plug>GitGutterPrevHunk
+endfunction
+
+function s:LoadFugitiveSettings()
+  nnoremap <leader>gs :Gstatus<CR>
+  nnoremap <leader>gr :Gremove<CR>
+  nnoremap <leader>gb :Gblame<CR>
+  nnoremap <leader>gw :Gwrite<CR>
+  nnoremap <leader>gc :Gcommit<CR>
+  nnoremap <leader>gd :Gdiff<CR>
 endfunction
 
 function PluginLoader#Load() dict
@@ -147,6 +153,7 @@ function PluginLoader#Load() dict
   call s:LoadWordMovementSettings()
   call s:LoadStatusBarSettings()
   call s:LoadGitGutterSettings()
+  call s:LoadFugitiveSettings()
   return
 endfunction PluginLoader#Load
 
