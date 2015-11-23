@@ -1,3 +1,7 @@
+############ Goals ############
+.DEFAULT_GOAL := install
+
+############ Vars and functions #############
 ALL_FILES = CommandLoader.vim \
 	MappingLoader.vim \
 	PluginLoader.vim \
@@ -5,10 +9,9 @@ ALL_FILES = CommandLoader.vim \
 	plugins \
 	vimrc
 
-TARGET = $$HOME/Code/vim_setup_example
+############ PHONY tasks #############
+.PHONY: install
 
-all: $(ALL_FILES)
+########### Public targets ############
+install: $(ALL_FILES)
 	@./build.sh
-
-clean:
-	$(RM) -rf $(TARGET)
