@@ -12,6 +12,7 @@ tpope/vim-surround=git@github.com:tpope/vim-surround.git
 Raimondi/delimitMate=git@github.com:Raimondi/delimitMate.git
 tpope/vim-fugitive=git@github.com:tpope/vim-fugitive.git
 airblade/vim-gitgutter=git@github.com:airblade/vim-gitgutter.git
+tpope/vim-obsession=git@github.com:tpope/vim-obsession.git
 vim-ruby/vim-ruby=git@github.com:vim-ruby/vim-ruby.git
 derekwyatt/vim-scala=git@github.com:derekwyatt/vim-scala.git
 fatih/vim-go=git@github.com:fatih/vim-go.git
