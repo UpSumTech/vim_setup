@@ -34,7 +34,8 @@ function s:LoadFileBrowserSettings()
   let NERDTreeIgnore = [
         \ 'tmp', '\.yardoc$', 'pkg', 'log', '\.map$', '\.swp$', '\.o$', '\.so$',
         \ '\.class$', '\.pyc$', '\.pyo$', '\.gif$', '\.jpg$', '\.png$', '\.git',
-        \ '\.hg$', '\.svn$', '\.obj$', '\.ico$', '\.pyd$', '\.exe$', '\~$', '\.dll'
+        \ '\.hg$', '\.svn$', '\.obj$', '\.ico$', '\.pyd$', '\.exe$', '\~$',
+        \ '\.svg$', '\.jpeg$', '\.swo$', '\.retry$', '\.dll$', '\.log$', '\.psd$'
         \ ]
 endfunction
 
