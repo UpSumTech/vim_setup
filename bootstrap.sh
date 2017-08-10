@@ -37,7 +37,7 @@ CopySetup() {
 
 GetPluginManager() {
   if [[ ! -d "$pluginDir/neobundle.vim" ]]; then
-    git clone "git@github.com:Shougo/neobundle.vim" "$pluginDir/neobundle.vim" \
+    git clone "https://github.com/Shougo/neobundle.vim.git" "$pluginDir/neobundle.vim" \
       || die "Could not clone plugin manager"
   else
     echo "$(cd "$pluginDir/neobundle.vim"; git pull)"
