@@ -126,6 +126,13 @@ function s:CloseConsoleOnTmux()
   end
 endfunction
 
+function s:GitPullReload()
+  set noconfirm
+  execute '!git pull'
+  bufdo e!
+  set confirm
+endfunction
+
 function CommandLoader#Load() dict
   " Commands
   command! BClose call <SID>BufferClose()
@@ -140,6 +147,7 @@ function CommandLoader#Load() dict
   command! PbLinePaste call <SID>PasteLineFromClipboard()
   command! OpenConsole call <SID>OpenConsoleOnTmux()
   command! CloseConsole call <SID>CloseConsoleOnTmux()
+  command! GitPullAndReload call <SID>GitPullReload()
 
   " AutoCommands
   autocmd BufReadPost * call <SID>GotoLastEditLine()

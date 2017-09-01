@@ -88,6 +88,10 @@ function MappingLoader#Load() dict
 
   " Search word under cursor
   nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+  " Git pull and reload the current buffer
+  nnoremap <leader>gp :GitPullAndReload<CR><CR>
+
 endfunction MappingLoader#Load
 
 function MappingLoader#New()
