@@ -74,6 +74,7 @@ function s:LoadLanguageConfigs()
     \ "PythonConfigLoader",
     \ "RubyConfigLoader",
     \ "ClojureConfigLoader",
+    \ "PureScriptHaskellConfigLoader",
   \ ]
 
   for languageLoader in languageLoaders
