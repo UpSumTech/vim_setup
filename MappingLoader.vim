@@ -33,8 +33,13 @@ function MappingLoader#Load() dict
   " open links in browser
   nnoremap <leader>ob :OBrowser<CR>
 
-  " Index ctags from any project, including those outside Rails
-  map <leader>ct :!ctags -R .<CR>
+  if executable('ctags')
+    " Index ctags from any project, including those outside Rails
+    map <leader>ct :!ctags -auR .<CR>
+
+    " Map Ctrl+] to open file defining current word
+    noremap <c-]> :execute "tag " . expand("<cword>")<cr>
+  endif
 
   " Settings for search with no magic. If you need special characters escape them with \
   nnoremap / /\V
