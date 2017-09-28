@@ -63,7 +63,7 @@ This repo contains scripts to setup vim for development
       --enable-largefile \
       --disable-netbeans \
       --enable-pythoninterp \
-      --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \
+      --with-python-config-dir=$(find /usr/lib/ -maxdepth 1 -name "python2.*" -type d | sort -V | tail -n 1) \
       --enable-perlinterp \
       --enable-luainterp \
       --with-luajit \
