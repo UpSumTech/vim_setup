@@ -86,6 +86,6 @@ This repo contains scripts to setup vim for development
 
     ```shell
     curl -s -S -L https://raw.githubusercontent.com/sumanmukherjee03/vim_setup/master/bootstrap.sh | bash
-    cd /home/developer/.vim
+    cd ~/.vim
     make
     ```
