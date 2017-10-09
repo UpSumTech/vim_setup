@@ -1,4 +1,16 @@
 #!/usr/bin/env bash
+set -e
+set -o pipefail
+
+#########################################################
+################### Helper functions ####################
+#########################################################
+export PID="$$" # Get parent pid so that you can kill the main proc from subshells
+err() {
+  echo >&2 "Error : $@"
+  kill -s TERM $PID
+  exit 1
+}
 
 function wrap_around_dir_change() {
   local fn="$1"
@@ -8,6 +20,9 @@ function wrap_around_dir_change() {
   popd
 }
 
+#########################################################
+################### High level fn #######################
+#########################################################
 function install_go_deps_for_project() {
   cd "$VIM_FILEDIR"
   while [[ ! $(find . -maxdepth 1 -type d | grep '.git') =~ './.git' && ! $(basename $(cd $PWD/../.. && pwd)) =~ (github.com|golang.org|google.golang.org|gopkg.in) ]]; do
@@ -15,9 +30,12 @@ function install_go_deps_for_project() {
   done
   echo "Reached root of project at : $(pwd)"
   echo "Installing deps"
-  go get -u $(find . -maxdepth 1 ! -path . ! -path '*/\.*' -type d | grep -v vendor | xargs -n 1 -I % echo %/...)
+  go get -u $(find . -maxdepth 1 ! -path . ! -path '*/\.*' -type d | grep -v vendor | xargs -n 1 -I % echo %/...) || die "Failed to install deps"
 }
 
+#########################################################
+###################### Entrypoint #######################
+#########################################################
 main() {
   wrap_around_dir_change install_go_deps_for_project
 }
