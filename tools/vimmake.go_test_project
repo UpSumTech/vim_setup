@@ -6,7 +6,7 @@ set -o pipefail
 ################### Helper functions ####################
 #########################################################
 export PID="$$" # Get parent pid so that you can kill the main proc from subshells
-err() {
+die() {
   echo >&2 "Error : $@"
   kill -s TERM $PID
   exit 1

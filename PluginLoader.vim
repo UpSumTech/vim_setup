@@ -145,6 +145,7 @@ function s:LoadFugitiveSettings()
 endfunction
 
 function s:LoadVimMakeSettings()
+  let g:vimmake_save = 1
   let g:vimmake_path = '~/.vim/tools'
   autocmd BufNewFile,BufRead vimmake.* nested setlocal filetype=sh
   let g:vimmake_mode = {}
