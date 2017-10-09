@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+function wrap_around_dir_change() {
+  local fn="$1"
+  shift 1
+  pushd .
+  eval "$(declare -F "$fn")" "$@"
+  popd
+}
+
+function install_go_deps_for_project() {
+  cd "$VIM_FILEDIR"
+  while [[ ! $(find . -maxdepth 1 -type d | grep '.git') =~ './.git' && ! $(basename $(cd $PWD/../.. && pwd)) =~ (github.com|golang.org|google.golang.org|gopkg.in) ]]; do
+    cd ..
+  done
+  echo "Reached root of project at : $(pwd)"
+  echo "Installing deps"
+  go get -u $(find . -maxdepth 1 ! -path . ! -path '*/\.*' -type d | grep -v vendor | xargs -n 1 -I % echo %/...)
+}
+
+main() {
+  wrap_around_dir_change install_go_deps_for_project
+}
+
+[[ "$BASH_SOURCE" == "$0" ]] && main "$@"

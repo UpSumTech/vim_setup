@@ -144,6 +144,17 @@ function s:LoadFugitiveSettings()
   nnoremap <leader>gd :Gdiff<CR>
 endfunction
 
+function s:LoadVimMakeSettings()
+  let g:vimmake_path = '~/.vim/tools'
+  autocmd BufNewFile,BufRead vimmake.* nested setlocal filetype=sh
+  let g:vimmake_mode = {}
+  let g:vimmake_mode['go_get_project_deps'] = 'async'
+  let g:vimmake_mode['go_test_project'] = 'async'
+  augroup QuickfixStatus
+    au! BufWinEnter quickfix setlocal statusline=%t\ [%{g:vimmake_build_status}]\ %{exists('w:quickfix_title')?\ '\ '.w:quickfix_title\ :\ ''}\ %=%-15(%l,%c%V%)\ %P
+  augroup END
+endfunction
+
 function PluginLoader#Load() dict
   call s:BundlePlugins()
   call s:LoadFileBrowserSettings()
@@ -155,6 +166,7 @@ function PluginLoader#Load() dict
   call s:LoadStatusBarSettings()
   call s:LoadGitGutterSettings()
   call s:LoadFugitiveSettings()
+  call s:LoadVimMakeSettings()
   return
 endfunction PluginLoader#Load
 

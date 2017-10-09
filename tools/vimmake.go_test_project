@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+function wrap_around_dir_change() {
+  local fn="$1"
+  shift 1
+  pushd .
+  eval "$(declare -F "$fn")" "$@"
+  popd
+}
+
+function run_go_tests_for_project() {
+  cd "$VIM_FILEDIR"
+  while [[ ! $(find . -maxdepth 1 -type d | grep '.git') =~ './.git' && ! $(basename $(cd $PWD/../.. && pwd)) =~ (github.com|golang.org|google.golang.org|gopkg.in) ]]; do
+    cd ..
+  done
+  echo "Reached root of project at : $(pwd)"
+  echo "Running tests"
+  go test -v $(go list ./...| grep -v utils | grep -v vendor)
+}
+
+main() {
+  wrap_around_dir_change run_go_tests_for_project
+}
+
+[[ "$BASH_SOURCE" == "$0" ]] && main "$@"
