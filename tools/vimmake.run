@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+set -e
+set -o pipefail
+
+#########################################################
+################### Helper functions ####################
+#########################################################
+export PID="$$" # Get parent pid so that you can kill the main proc from subshells
+err() {
+  echo >&2 "Error : $@"
+  kill -s TERM $PID
+  exit 1
+}
+
+function wrap_around_dir_change() {
+  local fn="$1"
+  shift 1
+  pushd .
+  eval "$(declare -F "$fn")" "$@"
+  popd
+}
+
+#########################################################
+################### High level fn #######################
+#########################################################
+function run() {
+  cd "$VIM_FILEDIR"
+  case "$VIM_FILEEXT" in
+    \.c|\.cpp|\.cc|\.cxx)
+      "$VIM_FILEDIR/$VIM_FILENOEXT" || die "Failed to run"
+      ;;
+    \.sh)
+      "./$VIM_FILENAME" || die "Failed to run"
+      ;;
+    \.py|\.pyw)
+      python "$VIM_FILENAME" || die "Failed to run"
+      ;;
+    \.js)
+      node "$VIM_FILENAME" || die "Failed to run"
+      ;;
+    \.rb)
+      ruby "$VIM_FILENAME" || die "Failed to run"
+      ;;
+    \.go)
+      go run "$VIM_FILENAME" || die "Failed to run"
+      ;;
+    *)
+      die "Dont know how to run file type: $VIM_FILEEXT"
+      ;;
+  esac
+}
+
+#########################################################
+###################### Entrypoint #######################
+#########################################################
+main() {
+  wrap_around_dir_change run
+}
+
+[[ "$BASH_SOURCE" == "$0" ]] && main "$@"
