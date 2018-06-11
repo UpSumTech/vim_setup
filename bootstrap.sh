@@ -45,13 +45,15 @@ GetPluginManager() {
 }
 
 GetPlugins() {
-  local githubUrl repoName
+  local githubUrl
+  local repoName
   if [[ ! -d "$pluginDir" ]]; then
     mkdir -p "$pluginDir"
   fi
   while read -r line; do
     githubUrl="$(echo "$line" | cut -d "=" -f2)"
     repoName="$( echo "$githubUrl" | cut -d "/" -f2 | cut -d '.' -f1 )"
+    echo "Downloading $repoName from $githubUrl"
     if [[ ! -d "$pluginDir/$repoName" ]]; then
       git clone "$githubUrl" "$pluginDir/$repoName" \
         || die "Could not clone plugin $repoName"
