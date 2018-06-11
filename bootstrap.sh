@@ -53,7 +53,7 @@ GetPlugins() {
   while read -r line; do
     githubUrl="$(echo "$line" | cut -d "=" -f2)"
     repoName="$( echo "$githubUrl" | cut -d "/" -f2 | cut -d '.' -f1 )"
-    echo "Downloading $repoName from $githubUrl"
+    echo "Downloading $repoName from $githubUrl into $pluginDir"
     if [[ ! -d "$pluginDir/$repoName" ]]; then
       git clone "$githubUrl" "$pluginDir/$repoName" \
         || die "Could not clone plugin $repoName"
