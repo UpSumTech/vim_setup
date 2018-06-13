@@ -95,3 +95,9 @@ This repo contains scripts to setup vim for development
     cd ~/.vim
     make
     ```
+
+### Post install notes
+
+1. For vim-go to work properly
+
+    Make sure you have installed the go tooling with :GoInstallBinaries
