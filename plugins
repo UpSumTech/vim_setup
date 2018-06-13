@@ -35,3 +35,4 @@ tpope/vim-fireplace=https://github.com/tpope/vim-fireplace.git
 guns/vim-clojure-highlight=https://github.com/guns/vim-clojure-highlight.git
 universal-ctags/ctags=https://github.com/universal-ctags/ctags.git
 skywind3000/vimmake=https://github.com/skywind3000/vimmake.git
+hashivim/vim-terraform=https://github.com/hashivim/vim-terraform.git
