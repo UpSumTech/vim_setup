@@ -3,6 +3,7 @@ function langs#CandJavaConfigLoader#Load() dict
     autocmd!
     autocmd FileType java,scala,c,cpp nested setlocal smartindent tabstop=4 shiftwidth=4 softtabstop=4
     autocmd FileType java,scala,c,cpp nested let b:loaded_delimitMate = 1
+    autocmd FileType scala            nested let g:scala_scaladoc_indent = 1
     autocmd FileType xml              nested setlocal omnifunc=xmlcomplete#CompleteTags
   augroup END
 endfunction langs#CandJavaConfigLoader#load

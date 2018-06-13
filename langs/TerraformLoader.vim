@@ -6,7 +6,7 @@ function langs#TerraformConfigLoader#Load() dict
   augroup END
 endfunction langs#TerraformConfigLoader#Load
 
-function langs#TerraformLoader#New()
+function langs#TerraformConfigLoader#New()
   let Retval = {
     \ 'load' : function('langs#TerraformConfigLoader#Load'),
   \ }
