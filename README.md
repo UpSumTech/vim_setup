@@ -14,6 +14,12 @@ This repo contains scripts to setup vim for development
     # Remove existing vim installation
     sudo apt-get ourge vim vim-runtime gvim vim-tiny vim-common vim-gui-common
     ```
+    # Install terraform (Optional)
+    ```
+    wget https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip
+    unzip terraform_0.11.7_linux_amd64.zip
+    mv terraform $HOME/bin
+    ```
 
 2. Setup the vim dependencies
     ```shell

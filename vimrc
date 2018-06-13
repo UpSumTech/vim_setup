@@ -70,11 +70,12 @@ function s:LoadLanguageConfigs()
   let languageLoaders=[
     \ "CandJavaConfigLoader",
     \ "GoConfigLoader",
-    \ "TerraformLoader",
+    \ "TerraformConfigLoader",
     \ "JsCssHtmlConfigLoader",
     \ "PythonConfigLoader",
     \ "RubyConfigLoader",
     \ "ClojureConfigLoader",
+    \ "ScalaConfigLoader",
     \ "PureScriptHaskellConfigLoader",
   \ ]
 
