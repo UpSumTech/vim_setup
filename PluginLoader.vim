@@ -100,6 +100,8 @@ function s:LoadSyntaxCheckingSettings()
     let g:syntastic_always_populate_loc_list = 1 " Always open the location-list
     let g:syntastic_auto_loc_list            = 2 " Close the location-list when errors are gone
     let g:syntastic_loc_list_height          = 5
+    let g:syntastic_check_on_open            = 0 " Check syntax when a file is opened
+    let g:syntastic_check_on_wq              = 0 " Disable syntax xheck when file is written to or closed
     let g:syntastic_sh_checkers              = ['shellcheck', 'checkbashisms', 'sh']
     let g:syntastic_sh_checkbashisms_args    = '-x'
     let g:syntastic_ruby_checkers            = ['mri', 'jruby', 'rubocop']
@@ -116,6 +118,19 @@ function s:LoadSyntaxCheckingSettings()
 
     command! TSyntaxCheck call <SID>ToggleSyntaxCheck()
     nnoremap <leader><space> :TSyntaxCheck<CR>
+
+    " (Optional)Remove Info(Preview) window
+    set completeopt-=preview
+
+    " (Optional)Hide Info(Preview) window after completions
+    autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+    autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+    if executable('terraform')
+      let g:syntastic_terraform_tffilter_plan = 1 " (Optional) Enable terraform plan to be include in filter
+      let g:terraform_completion_keys = 1 " (Optional) Default: 0, enable(1)/disable(0) plugin's keymapping
+      let g:terraform_registry_module_completion = 0 " (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
+    endif
   endif
 endfunction
 
