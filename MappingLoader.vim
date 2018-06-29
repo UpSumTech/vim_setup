@@ -50,13 +50,13 @@ function MappingLoader#Load() dict
   nnoremap :g// :g//
 
   " Remap window commands
-  nmap <Leader>= <C-w>=
-  nmap <Leader>h <C-w>h
-  nmap <Leader>j <C-w>j
-  nmap <Leader>k <C-w>k
-  nmap <Leader>l <C-w>l
-  nmap <Leader>s <C-w>s
-  nmap <Leader>v <C-w>v
+  nnoremap <Leader>= <C-w>=
+  nnoremap <Leader>h <C-w>h
+  nnoremap <Leader>j <C-w>j
+  nnoremap <Leader>k <C-w>k
+  nnoremap <Leader>l <C-w>l
+  nnoremap <Leader>s <C-w>s
+  nnoremap <Leader>v <C-w>v
 
   " Mappings for tabs
   nnoremap <leader><tab>n :tabnew<cr>
@@ -67,10 +67,10 @@ function MappingLoader#Load() dict
   nnoremap <Leader><tab>l :LastTab<CR>
 
   " Helpful mappings for opening windows
-  nmap <leader>ew :e <C-R>=expand('%:h').'/'<cr>
-  nmap <leader>es :sp <C-R>=expand('%:h').'/'<cr>
-  nmap <leader>ev :vsp <C-R>=expand('%:h').'/'<cr>
-  nmap <leader>et :tabe <C-R>=expand('%:h').'/'<cr>
+  nnoremap <leader>ew :e <C-R>=expand('%:h').'/'<cr>
+  nnoremap <leader>es :sp <C-R>=expand('%:h').'/'<cr>
+  nnoremap <leader>ev :vsp <C-R>=expand('%:h').'/'<cr>
+  nnoremap <leader>et :tabe <C-R>=expand('%:h').'/'<cr>
 
   " cd to the directory containing the file in the buffer
   nmap <silent> <leader>cd :lcd %:h<CR>

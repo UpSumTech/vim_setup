@@ -106,6 +106,8 @@ function s:LoadSyntaxCheckingSettings()
     let g:syntastic_sh_checkbashisms_args    = '-x'
     let g:syntastic_ruby_checkers            = ['mri', 'jruby', 'rubocop']
     let g:syntastic_javascript_checkers      = ['jshint']
+    let g:syntastic_json_checkers            = ['jsonlint']
+    let g:syntastic_terraform_checkers       = ['tflint']
     let g:syntastic_ruby_rubocop_args        = '--display-cop-names'
     let g:syntastic_scss_checkers            = ['sass']
     let g:syntastic_sass_checkers            = ['sass']
@@ -118,19 +120,6 @@ function s:LoadSyntaxCheckingSettings()
 
     command! TSyntaxCheck call <SID>ToggleSyntaxCheck()
     nnoremap <leader><space> :TSyntaxCheck<CR>
-
-    " (Optional)Remove Info(Preview) window
-    set completeopt-=preview
-
-    " (Optional)Hide Info(Preview) window after completions
-    autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-    autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-    if executable('terraform')
-      let g:syntastic_terraform_tffilter_plan = 1 " (Optional) Enable terraform plan to be include in filter
-      let g:terraform_completion_keys = 1 " (Optional) Default: 0, enable(1)/disable(0) plugin's keymapping
-      let g:terraform_registry_module_completion = 0 " (Optional) Default: 1, enable(1)/disable(0) terraform module registry completion
-    endif
   endif
 endfunction
 
