@@ -185,7 +185,7 @@ endfunction
 function s:LoadNeomakeSettings()
   let g:neomake_open_list = 2
   command! TNeomake call <SID>ToggleNeomake()
-  nnoremap <leader>m :TNeomake<CR>
+  nnoremap <c-m> :TNeomake<CR>
 endfunction
 
 function PluginLoader#Load() dict
