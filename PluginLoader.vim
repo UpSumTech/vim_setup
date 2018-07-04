@@ -163,6 +163,31 @@ function s:LoadVimMakeSettings()
   inoremap <F5> <ESC>:VimTool run<CR>
 endfunction
 
+function s:ToggleNeomake()
+  let l:quickfixWindow = filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"')
+  if !(exists('g:is_location_list_open'))
+    let g:is_location_list_open = 0
+  endif
+
+  if empty(l:quickfixWindow) && !g:is_location_list_open
+    :execute "Neomake"
+    let g:is_location_list_open = 1
+  elseif !empty(l:quickfixWindow) && !g:is_location_list_open
+    :execute "NeomakeCancelJobs"
+    let g:is_location_list_open = 0
+  else
+    :execute "NeomakeCancelJobs"
+    let g:is_location_list_open = 0
+    lclose
+  endif
+endfunction
+
+function s:LoadNeomakeSettings()
+  let g:neomake_open_list = 2
+  command! TNeomake call <SID>ToggleNeomake()
+  nnoremap <leader>m :TNeomake<CR>
+endfunction
+
 function PluginLoader#Load() dict
   call s:BundlePlugins()
   call s:LoadFileBrowserSettings()
@@ -175,6 +200,7 @@ function PluginLoader#Load() dict
   call s:LoadGitGutterSettings()
   call s:LoadFugitiveSettings()
   call s:LoadVimMakeSettings()
+  call s:LoadNeomakeSettings()
   return
 endfunction PluginLoader#Load
 
@@ -184,6 +210,7 @@ function PluginLoader#AfterLoad() dict
   syntax enable
   filetype plugin indent on
   color solarized
+  call s:LoadNeomakeSettings()
   return
 endfunction PluginLoader#AfterLoad
 
