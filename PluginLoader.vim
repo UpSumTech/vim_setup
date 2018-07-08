@@ -112,6 +112,7 @@ function s:LoadSyntaxCheckingSettings()
     let g:syntastic_scss_checkers            = ['sass']
     let g:syntastic_sass_checkers            = ['sass']
     let g:syntastic_yaml_checkers            = ['jsyaml'] " npm install js-yaml
+    let g:syntastic_go_checkers              = ['gometalinter'] " go get github.com/alecthomas/gometalinter && gometalinter --install
     let g:syntastic_mode_map                 = {
           \ "mode": "passive",
           \ "active_filetypes": [],
@@ -200,7 +201,6 @@ function PluginLoader#Load() dict
   call s:LoadGitGutterSettings()
   call s:LoadFugitiveSettings()
   call s:LoadVimMakeSettings()
-  call s:LoadNeomakeSettings()
   return
 endfunction PluginLoader#Load
 
