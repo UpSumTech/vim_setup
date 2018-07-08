@@ -48,7 +48,7 @@ function SettingLoader#Load() dict
   if executable('ag')
     let g:ag_prg="ag -U --nocolor --column --nogroup --noheading"
     let g:ackprg="ag -U --nocolor --nogroup --column"
-    set grepprg=ag\ -U\ --nogroup\ --nocolor\ --path-to-agignore\ $HOME/.agignore " Use Ag over Grep
+    set grepprg=ag\ -U\ --nogroup\ --nocolor\ --path-to-ignore\ $HOME/.agignore " Use Ag over Grep
   endif
 
   let g:netrw_altv           = 1

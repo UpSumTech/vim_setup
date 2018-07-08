@@ -170,7 +170,6 @@ function s:ToggleNeomake()
   if !(exists('g:is_location_list_open'))
     let g:is_location_list_open = 0
   endif
-
   if empty(l:quickfixWindow) && !g:is_location_list_open
     :execute "Neomake"
     let g:is_location_list_open = 1
@@ -190,6 +189,30 @@ function s:LoadNeomakeSettings()
   nnoremap <c-m> :TNeomake<CR>
 endfunction
 
+function s:LoadEasyGrepSettings()
+  let g:EasyGrepCommand=1 " Use grepprg for searching
+  let g:EasyGrepMode=0 " Search all files
+  let g:EasyGrepRecursive=1 " Use recursive search
+  let g:EasyGrepIgnoreCase=1 " Ignore case during search
+  let g:EasyGrepFilesToExclude=".svn,.git,tmp" " Ignore few dirs during search
+  let g:EasyGrepWindow=0 " Use quickfix for the window
+  let g:EasyGrepOpenWindowOnMatch=1 " Open the matched result in window
+  let g:EasyGrepReplaceWindowMode=2 " Overwrite buffers during global replace
+  let g:EasyGrepFileAssociations=$HOME."/.vim/plugin_configs/EasyGrepFileAssociations"
+  map <silent> <c-g>v <plug>EgMapGrepCurrentWord_v
+  vmap <silent> <c-g>v <plug>EgMapGrepSelection_v
+  map <silent> <c-g>V <plug>EgMapGrepCurrentWord_V
+  vmap <silent> <c-g>V <plug>EgMapGrepSelection_V
+  map <silent> <c-g>a <plug>EgMapGrepCurrentWord_a
+  vmap <silent> <c-g>a <plug>EgMapGrepSelection_a
+  map <silent> <c-g>A <plug>EgMapGrepCurrentWord_A
+  vmap <silent> <c-g>A <plug>EgMapGrepSelection_A
+  map <silent> <c-g>r <plug>EgMapReplaceCurrentWord_r
+  vmap <silent> <c-g>r <plug>EgMapReplaceSelection_r
+  map <silent> <c-g>R <plug>EgMapReplaceCurrentWord_R
+  vmap <silent> <c-g>R <plug>EgMapReplaceSelection_R
+endfunction
+
 function PluginLoader#Load() dict
   call s:BundlePlugins()
   call s:LoadFileBrowserSettings()
@@ -202,6 +225,7 @@ function PluginLoader#Load() dict
   call s:LoadGitGutterSettings()
   call s:LoadFugitiveSettings()
   call s:LoadVimMakeSettings()
+  call s:LoadEasyGrepSettings()
   return
 endfunction PluginLoader#Load
 

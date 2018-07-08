@@ -40,3 +40,4 @@ vim-scripts/groovy.vim=https://github.com/vim-scripts/groovy.vim.git
 martinda/Jenkinsfile-vim-syntax=https://github.com/martinda/Jenkinsfile-vim-syntax.git
 hashivim/vim-terraform=https://github.com/hashivim/vim-terraform.git
 neomake/neomake=https://github.com/neomake/neomake.git
+dkprice/vim-easygrep=https://github.com/dkprice/vim-easygrep.git
