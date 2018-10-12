@@ -49,3 +49,4 @@ SirVer/ultisnips=https://github.com/SirVer/ultisnips.git
 honza/vim-snippets=https://github.com/honza/vim-snippets.git
 Yggdroot/indentLine=https://github.com/Yggdroot/indentLine.git
 artur-shaik/vim-javacomplete2=https://github.com/artur-shaik/vim-javacomplete2.git
+mbbill/undotree=https://github.com/mbbill/undotree.git

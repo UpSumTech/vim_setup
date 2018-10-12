@@ -59,6 +59,11 @@ function SettingLoader#Load() dict
   let g:netrw_retmap         = 1
   let g:netrw_silent         = 1
   let g:netrw_special_syntax = 1
+
+  if has("persistent_undo")
+    set undodir=~/.undodir/
+    set undofile
+  endif
 endfunction SettingLoader#Load
 
 function SettingLoader#New()

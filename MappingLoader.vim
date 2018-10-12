@@ -94,6 +94,9 @@ function MappingLoader#Load() dict
 
   " Toggle tag bar
   nmap <F8> :TagbarToggle<CR>
+
+  " Toggle undo tree
+  nnoremap <leader>ut :UndotreeToggle<CR>
 endfunction MappingLoader#Load
 
 function MappingLoader#New()
