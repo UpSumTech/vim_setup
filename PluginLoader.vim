@@ -195,6 +195,9 @@ endfunction
 function s:LoadSplitJoinSettings()
   nnoremap sj :SplitjoinSplit<CR>
   nnoremap sk :SplitjoinJoin<CR>
+  " let g:UltiSnipsExpandTrigger="<tab>"
+  " let g:UltiSnipsJumpForwardTrigger="<c-b>"
+  " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 endfunction
 
 function s:LoadVimMakeSettings()

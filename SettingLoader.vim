@@ -28,6 +28,7 @@ function SettingLoader#Load() dict
   set omnifunc=syntaxcomplete#Complete                        " This is overriden by syntax plugins.
   set laststatus=2                                            " Always show the status line
   set history=20                                              " Remember the last 20 commands
+  set nopaste                                                 " In insert mode always use nopaste for tab completion to work properly
 
   set listchars=""          " Reset the listchars
   set listchars+=tab:\ \    " List tab as 2 spaces

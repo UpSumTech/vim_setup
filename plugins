@@ -45,3 +45,5 @@ martinda/Jenkinsfile-vim-syntax=https://github.com/martinda/Jenkinsfile-vim-synt
 hashivim/vim-terraform=https://github.com/hashivim/vim-terraform.git
 neomake/neomake=https://github.com/neomake/neomake.git
 dkprice/vim-easygrep=https://github.com/dkprice/vim-easygrep.git
+SirVer/ultisnips=https://github.com/SirVer/ultisnips.git
+honza/vim-snippets=https://github.com/honza/vim-snippets.git
