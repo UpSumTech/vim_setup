@@ -105,6 +105,7 @@ function s:LoadSyntaxCheckingSettings()
     let g:syntastic_sh_checkers              = ['shellcheck', 'checkbashisms', 'sh']
     let g:syntastic_sh_checkbashisms_args    = '-x'
     let g:syntastic_ruby_checkers            = ['mri', 'jruby', 'rubocop']
+    let g:syntastic_python_checkers          = ['pylint']
     let g:syntastic_javascript_checkers      = ['jshint']
     let g:syntastic_json_checkers            = ['jsonlint']
     let g:syntastic_python_checkers          = ['pylint']
@@ -170,6 +171,7 @@ function s:ToggleNeomake()
   if !(exists('g:is_location_list_open'))
     let g:is_location_list_open = 0
   endif
+
   if empty(l:quickfixWindow) && !g:is_location_list_open
     :execute "Neomake"
     let g:is_location_list_open = 1
