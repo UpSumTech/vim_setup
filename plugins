@@ -47,3 +47,5 @@ neomake/neomake=https://github.com/neomake/neomake.git
 dkprice/vim-easygrep=https://github.com/dkprice/vim-easygrep.git
 SirVer/ultisnips=https://github.com/SirVer/ultisnips.git
 honza/vim-snippets=https://github.com/honza/vim-snippets.git
+Yggdroot/indentLine=https://github.com/Yggdroot/indentLine.git
+artur-shaik/vim-javacomplete2=https://github.com/artur-shaik/vim-javacomplete2.git

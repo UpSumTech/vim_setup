@@ -200,6 +200,12 @@ function s:LoadSplitJoinSettings()
   " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 endfunction
 
+function s:LoadIndentLineSettings()
+  let g:indentLine_color_term = 239
+  let g:indentLine_color_gui = '#09AA08'
+  let g:indentLine_char = '¦'
+endfunction
+
 function s:LoadVimMakeSettings()
   let g:vimmake_save = 1
   let g:vimmake_path = '~/.vim/tools'
@@ -281,6 +287,7 @@ function PluginLoader#Load() dict
   call s:LoadVimMakeSettings()
   call s:LoadEasyGrepSettings()
   call s:LoadSplitJoinSettings()
+  call s:LoadIndentLineSettings()
   return
 endfunction PluginLoader#Load
 
