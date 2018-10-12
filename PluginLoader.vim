@@ -99,22 +99,37 @@ endfunction
 
 function s:LoadLinterSettings()
   let g:ale_fixers = {
-  \ 'javascript': ['prettier'],
-  \ 'jsx': ['prettier'],
-  \ 'css': ['prettier'],
+  \  'javascript': ['prettier'],
+  \  'jsx': ['prettier'],
+  \  'css': ['prettier'],
   \}
   let g:ale_linters = {
-  \ 'javascript': ['stylelint', 'eslint'],
-  \ 'jsx': ['stylelint', 'eslint'],
+  \  'javascript': ['stylelint', 'eslint'],
+  \  'jsx': ['stylelint', 'eslint'],
   \}
   let g:ale_linter_aliases = {'jsx': 'css'}
   let g:ale_fix_on_save = 1
   " Do not lint or fix minified files.
   let g:ale_pattern_options = {
-  \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
-  \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+  \  '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+  \  '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
   \}
   let g:ale_lint_on_enter = 0
+endfunction
+
+function s:LoadCodeSnippetHelpers()
+  let g:user_emmet_settings = {
+  \  'php' : {
+  \    'extends' : 'html',
+  \    'filters' : 'c',
+  \  },
+  \  'xml' : {
+  \    'extends' : 'html',
+  \  },
+  \  'haml' : {
+  \    'extends' : 'html',
+  \  },
+  \}
 endfunction
 
 function s:LoadSyntaxCheckingSettings()
@@ -250,6 +265,7 @@ function PluginLoader#Load() dict
   call s:LoadJavascriptSyntaxSettings()
   call s:LoadLinterSettings()
   call s:LoadSyntaxCheckingSettings()
+  call s:LoadCodeSnippetHelpers()
   call s:LoadWordMovementSettings()
   call s:LoadStatusBarSettings()
   call s:LoadGitGutterSettings()
