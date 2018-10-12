@@ -22,6 +22,7 @@ jelera/vim-Javascript-syntax=https://github.com/jelera/vim-Javascript-syntax.git
 elzr/vim-json=https://github.com/elzr/vim-json.git
 pangloss/vim-javascript=https://github.com/pangloss/vim-javascript.git
 mxw/vim-jsx=https://github.com/mxw/vim-jsx.git
+w0rp/ale=https://github.com/w0rp/ale.git
 kchmck/vim-coffee-script=https://github.com/kchmck/vim-coffee-script.git
 digitaltoad/vim-jade=https://github.com/digitaltoad/vim-jade.git
 Lokaltog/vim-powerline=https://github.com/Lokaltog/vim-powerline.git

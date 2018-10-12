@@ -97,6 +97,26 @@ function s:LoadJavascriptSyntaxSettings()
   let g:jsx_ext_required = 1
 endfunction
 
+function s:LoadLinterSettings()
+  let g:ale_fixers = {
+  \ 'javascript': ['prettier'],
+  \ 'jsx': ['prettier'],
+  \ 'css': ['prettier'],
+  \}
+  let g:ale_linters = {
+  \ 'javascript': ['stylelint', 'eslint'],
+  \ 'jsx': ['stylelint', 'eslint'],
+  \}
+  let g:ale_linter_aliases = {'jsx': 'css'}
+  let g:ale_fix_on_save = 1
+  " Do not lint or fix minified files.
+  let g:ale_pattern_options = {
+  \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+  \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+  \}
+  let g:ale_lint_on_enter = 0
+endfunction
+
 function s:LoadSyntaxCheckingSettings()
   if exists('*getmatches')
     let g:is_posix                           = 1 " Syntax highlight shell scripts as per POSIX
@@ -113,7 +133,6 @@ function s:LoadSyntaxCheckingSettings()
     let g:syntastic_sh_checkbashisms_args    = '-x'
     let g:syntastic_ruby_checkers            = ['mri', 'jruby', 'rubocop']
     let g:syntastic_python_checkers          = ['pylint']
-    let g:syntastic_javascript_checkers      = ['jshint']
     let g:syntastic_json_checkers            = ['jsonlint']
     let g:syntastic_python_checkers          = ['pylint']
     let g:syntastic_terraform_checkers       = ['tflint']
@@ -229,6 +248,7 @@ function PluginLoader#Load() dict
   call s:LoadLineCommenterSettings()
   call s:LoadTabularizingSettings()
   call s:LoadJavascriptSyntaxSettings()
+  call s:LoadLinterSettings()
   call s:LoadSyntaxCheckingSettings()
   call s:LoadWordMovementSettings()
   call s:LoadStatusBarSettings()
