@@ -192,6 +192,11 @@ function s:LoadFugitiveSettings()
   nnoremap <leader>gd :Gdiff<CR>
 endfunction
 
+function s:LoadSplitJoinSettings()
+  nnoremap sj :SplitjoinSplit<CR>
+  nnoremap sk :SplitjoinJoin<CR>
+endfunction
+
 function s:LoadVimMakeSettings()
   let g:vimmake_save = 1
   let g:vimmake_path = '~/.vim/tools'
@@ -272,6 +277,7 @@ function PluginLoader#Load() dict
   call s:LoadFugitiveSettings()
   call s:LoadVimMakeSettings()
   call s:LoadEasyGrepSettings()
+  call s:LoadSplitJoinSettings()
   return
 endfunction PluginLoader#Load
 
