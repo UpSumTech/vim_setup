@@ -1,3 +1,9 @@
 bundle/**/*
 .netrwhist
 plugins.vim
+compiler/**/*
+ftplugin/**/*
+indent/**/*
+omnicompletion/**/*
+plugin_configs/**/*
+syntax/**/*
