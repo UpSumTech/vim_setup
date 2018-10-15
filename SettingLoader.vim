@@ -61,6 +61,7 @@ function SettingLoader#Load() dict
   let g:netrw_special_syntax = 1
 
   if has("persistent_undo")
+    call system('mkdir -p ~/.undodir')
     set undodir=~/.undodir/
     set undofile
   endif
