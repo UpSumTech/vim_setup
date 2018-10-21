@@ -47,7 +47,7 @@ gen_cscope() {
     ! -path "./temp/*" \
     > "$CSCOPE_DIR/cscope.files"
   cscope -b -i "$CSCOPE_DIR/cscope.files"
-  export CSCOPE_DB="$CSCOPE_DIR/cscope.out"
+  export CSCOPE_DB="$VIM_CWD/cscope.out"
 }
 
 #########################################################
