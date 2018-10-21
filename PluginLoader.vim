@@ -214,11 +214,13 @@ function s:LoadVimMakeSettings()
   let g:vimmake_mode['go_get_project_deps'] = 'async'
   let g:vimmake_mode['go_test_project'] = 'async'
   let g:vimmake_mode['run'] = 'quickfix'
+  let g:vimmake_mode['gen_cscope'] = 'async'
   augroup QuickfixStatus
     au! BufWinEnter quickfix setlocal statusline=%t\ [%{g:vimmake_build_status}]\ %{exists('w:quickfix_title')?\ '\ '.w:quickfix_title\ :\ ''}\ %=%-15(%l,%c%V%)\ %P
   augroup END
   noremap <F5> :VimTool run<CR>
   inoremap <F5> <ESC>:VimTool run<CR>
+  noremap <F6> :VimTool gen_cscope<CR>
 endfunction
 
 function s:ToggleNeomake()
