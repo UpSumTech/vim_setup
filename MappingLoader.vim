@@ -131,6 +131,9 @@ function MappingLoader#Load() dict
 
   " Toggle undo tree
   nnoremap <leader>ut :UndotreeToggle<CR>
+
+  " Clear quickfix window
+  nnoremap <leader>cq :cexpr []<CR>
 endfunction MappingLoader#Load
 
 function MappingLoader#New()
