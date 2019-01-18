@@ -134,6 +134,9 @@ function MappingLoader#Load() dict
 
   " Clear quickfix window
   nnoremap <leader>cq :cexpr []<CR>
+
+  " Find for a word across the project
+  nnoremap <leader>fp :ProjectFind<space>
 endfunction MappingLoader#Load
 
 function MappingLoader#New()

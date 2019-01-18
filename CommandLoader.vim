@@ -148,6 +148,7 @@ function CommandLoader#Load() dict
   command! OpenConsole call <SID>OpenConsoleOnTmux()
   command! CloseConsole call <SID>CloseConsoleOnTmux()
   command! GitPullAndReload call <SID>GitPullReload()
+  command! -nargs=+ -complete=file -bar ProjectFind grep! <args>|cw
 
   " AutoCommands
   autocmd BufReadPost * call <SID>GotoLastEditLine()
