@@ -36,6 +36,7 @@ kien/rainbow_parentheses.vim=https://github.com/kien/rainbow_parentheses.vim.git
 tpope/vim-salve=https://github.com/tpope/vim-salve.git
 tpope/vim-dispatch=https://github.com/tpope/vim-dispatch.git
 tpope/vim-fireplace=https://github.com/tpope/vim-fireplace.git
+tpope/vim-repeat=https://github.com/tpope/vim-repeat.git
 guns/vim-clojure-highlight=https://github.com/guns/vim-clojure-highlight.git
 universal-ctags/ctags=https://github.com/universal-ctags/ctags.git
 majutsushi/tagbar=https://github.com/majutsushi/tagbar.git
