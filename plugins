@@ -52,3 +52,4 @@ Yggdroot/indentLine=https://github.com/Yggdroot/indentLine.git
 artur-shaik/vim-javacomplete2=https://github.com/artur-shaik/vim-javacomplete2.git
 mbbill/undotree=https://github.com/mbbill/undotree.git
 gorkunov/smartpairs.vim=https://github.com/gorkunov/smartpairs.vim.git
+ensime/ensime-vim=https://github.com/ensime/ensime-vim.git

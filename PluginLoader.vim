@@ -248,6 +248,10 @@ function s:LoadNeomakeSettings()
   nnoremap <c-m> :TNeomake<CR>
 endfunction
 
+function s:LoadJavaCompleteSettings()
+  let g:JavaComplete_EnableDefaultMappings = 0
+endfunction
+
 function s:LoadEasyGrepSettings()
   let g:EasyGrepCommand=1 " Use grepprg for searching
   let g:EasyGrepMode=0 " Search all files
@@ -290,6 +294,7 @@ function PluginLoader#Load() dict
   call s:LoadEasyGrepSettings()
   call s:LoadSplitJoinSettings()
   call s:LoadIndentLineSettings()
+  call s:LoadJavaCompleteSettings()
   return
 endfunction PluginLoader#Load
 
