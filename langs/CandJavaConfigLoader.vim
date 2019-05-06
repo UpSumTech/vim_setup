@@ -1,7 +1,7 @@
 function langs#CandJavaConfigLoader#Load() dict
   augroup C_Java_Scala
     autocmd!
-    autocmd FileType java,scala nested let maplocalleader="\\"
+    autocmd FileType java,scala nested let b:maplocalleader="\\"
     autocmd FileType java,scala,c,cpp nested let b:loaded_delimitMate = 1
     autocmd FileType scala            nested let g:scala_scaladoc_indent = 1
     autocmd FileType xml              nested setlocal omnifunc=xmlcomplete#CompleteTags
