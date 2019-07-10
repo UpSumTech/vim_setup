@@ -68,7 +68,8 @@ endfunction
 
 function s:LoadLanguageConfigs()
   let languageLoaders=[
-    \ "CandJavaConfigLoader",
+    \ "ClangConfigLoader",
+    \ "JavaScalaConfigLoader",
     \ "GoConfigLoader",
     \ "TerraformConfigLoader",
     \ "JsCssHtmlConfigLoader",

@@ -310,10 +310,10 @@ endfunction PluginLoader#AfterLoad
 
 function PluginLoader#New()
   let Retval = {
-        \ 'install'    : function('PluginLoader#Install'),
-        \ 'beforeLoad' : function('PluginLoader#BeforeLoad'),
-        \ 'load'       : function('PluginLoader#Load'),
-        \ 'afterLoad'  : function('PluginLoader#AfterLoad'),
-        \ }
+    \ 'install'    : function('PluginLoader#Install'),
+    \ 'beforeLoad' : function('PluginLoader#BeforeLoad'),
+    \ 'load'       : function('PluginLoader#Load'),
+    \ 'afterLoad'  : function('PluginLoader#AfterLoad'),
+    \ }
   return Retval
 endfunction PluginLoader#New
