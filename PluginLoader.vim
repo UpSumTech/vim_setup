@@ -33,7 +33,7 @@ function s:LoadFileBrowserSettings()
   let NERDTreeShowHidden=2
   let NERDTreeIgnore = [
         \ 'tmp', '\.yardoc$', 'pkg', 'log', '\.map$', '\.swp$', '\.o$', '\.so$',
-        \ '\.class$', '\.pyc$', '\.pyo$', '\.gif$', '\.jpg$', '\.png$', '\.git',
+        \ '\.class$', 'target', '\.pyc$', '\.pyo$', '\.gif$', '\.jpg$', '\.png$', '\.git',
         \ '\.hg$', '\.svn$', '\.obj$', '\.ico$', '\.pyd$', '\.exe$', '\~$',
         \ '\.svg$', '\.jpeg$', '\.swo$', '\.retry$', '\.dll$', '\.log$', '\.psd$'
         \ ]

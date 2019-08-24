@@ -47,9 +47,8 @@ function langs#JavaScalaConfigLoader#Load() dict
     autocmd FileType java,scala nested nnoremap <buffer> <silent> <LocalLeader>T :EnTypeCheck<CR>
     autocmd FileType java,scala nested nnoremap <buffer> <silent> K  :EnDocBrowse<CR>
     autocmd FileType java,scala nested nnoremap <buffer> <silent> gd :EnDeclaration<CR>
-    autocmd FileType java,scala nested nnoremap <buffer> <silent> <C-]>  :EnDeclaration<CR>
+    autocmd FileType java,scala nested nnoremap <buffer> <silent> <C-g>]  :EnDeclaration<CR>
     autocmd FileType java,scala nested nnoremap <buffer> <silent> <C-w>] :EnDeclarationSplit<CR>
-    autocmd FileType java,scala nested nnoremap <buffer> <silent> <C-w><C-]> :EnDeclarationSplit<CR>
     autocmd FileType java,scala nested nnoremap <buffer> <silent> <C-v>] :EnDeclarationSplit v<CR>
     autocmd FileType java,scala nested nnoremap <buffer> <silent> <LocalLeader>i :EnInspectType<CR>
     autocmd FileType java,scala nested nnoremap <buffer> <silent> <LocalLeader>I :EnSuggestImport<CR>

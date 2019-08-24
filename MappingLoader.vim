@@ -35,7 +35,7 @@ function MappingLoader#Load() dict
 
   if executable('ctags')
     " Index ctags from any project, including those outside Rails
-    map <leader>ct :!ctags -auR .<CR>
+    map <leader>ct :!ctags --exclude=.git --exclude=node_modules --exclude=vendor --exclude=target --exclude=bundle --exclude=tmp --exclude=temp -auR .<CR>
 
     " Map Ctrl+] to open file defining current word
     noremap <c-]> :execute "tag " . expand("<cword>")<cr>
