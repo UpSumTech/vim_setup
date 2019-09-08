@@ -2,9 +2,8 @@ function langs#JsCssHtmlConfigLoader#Load() dict
   augroup JS_Html_Css_JSON
     autocmd!
 
-    autocmd FileType javascript vnoremap <buffer> <leader>fef :call RangeJsBeautify()<CR>
+    " Only beautify html files
     autocmd FileType html       vnoremap <buffer> <leader>fef :call RangeHtmlBeautify()<CR>
-    autocmd FileType css        vnoremap <buffer> <leader>fef :call RangeCSSBeautify()<CR>
 
     autocmd FileType css           nested setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType html,markdown nested setlocal omnifunc=htmlcomplete#CompleteTags

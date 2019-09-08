@@ -112,13 +112,14 @@ function s:LoadLinterSettings()
   \  'jsx': ['stylelint', 'eslint'],
   \}
   let g:ale_linter_aliases = {'jsx': 'css'}
-  let g:ale_fix_on_save = 1
   " Do not lint or fix minified files.
   let g:ale_pattern_options = {
   \  '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
   \  '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
   \}
   let g:ale_lint_on_enter = 0
+  " Dont fix the files when saving
+  let g:ale_fix_on_save = 0
 endfunction
 
 function s:LoadCodeSnippetHelpers()
