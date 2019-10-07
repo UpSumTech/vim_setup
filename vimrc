@@ -73,6 +73,7 @@ function s:LoadLanguageConfigs()
     \ "GoConfigLoader",
     \ "TerraformConfigLoader",
     \ "JsCssHtmlConfigLoader",
+    \ "OrgModeConfigLoader",
     \ "PythonConfigLoader",
     \ "RubyConfigLoader",
     \ "ClojureConfigLoader",
