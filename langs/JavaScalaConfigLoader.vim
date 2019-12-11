@@ -56,9 +56,9 @@ function langs#JavaScalaConfigLoader#Load() dict
   augroup END
 endfunction langs#JavaScalaConfigLoader#load
 
-function langs#CandJavaConfigLoader#New()
+function langs#JavaScalaConfigLoader#New()
   let Retval = {
     \ 'load' : function('langs#JavaScalaConfigLoader#Load'),
   \ }
   return Retval
-endfunction langs#CandJavaConfigLoader#New
+endfunction langs#JavaScalaConfigLoader#New
