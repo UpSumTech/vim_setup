@@ -133,6 +133,13 @@ function s:GitPullReload()
   set confirm
 endfunction
 
+function s:SearchAndReplace(search, replace)
+  set noconfirm
+  execute '!find . -not -iwholename "*.git*" -type f -exec sed -i "s/'.a:search.'/'.a:replace.'/g" {} \;'
+  bufdo e!
+  set confirm
+endfunction
+
 function CommandLoader#Load() dict
   " Commands
   command! BClose call <SID>BufferClose()
@@ -148,6 +155,7 @@ function CommandLoader#Load() dict
   command! OpenConsole call <SID>OpenConsoleOnTmux()
   command! CloseConsole call <SID>CloseConsoleOnTmux()
   command! GitPullAndReload call <SID>GitPullReload()
+  command! -nargs=+ -complete=command SearchAndReplaceAcrossProject call <SID>SearchAndReplace(<f-args>)
   command! -nargs=+ -complete=file -bar ProjectFind grep! <args>|cw
 
   " AutoCommands
