@@ -41,6 +41,9 @@ function langs#JavaScalaConfigLoader#Load() dict
     autocmd FileType java nested vmap <localLeader>ja <Plug>(JavaComplete-Generate-AccessorSetterGetter)
     autocmd FileType java nested nmap <silent> <buffer> <localLeader>jn <Plug>(JavaComplete-Generate-NewClass)
     autocmd FileType java nested nmap <silent> <buffer> <localLeader>jN <Plug>(JavaComplete-Generate-ClassInFile)
+    autocmd FileType java nested let g:JavaComplete_ClosingBrace = 1
+    autocmd FileType java nested let g:JavaComplete_StaticImportsAtTop = 1
+    " Use C-x C-o for omni-completion
 
     autocmd FileType java,scala nested nnoremap <buffer> <silent> <LocalLeader>t :EnType<CR> |
     autocmd FileType java,scala nested xnoremap <buffer> <silent> <LocalLeader>t :EnType selection<CR> |

@@ -57,3 +57,4 @@ rhysd/vim-clang-format=https://github.com/rhysd/vim-clang-format
 tpope/vim-speeddating=https://github.com/tpope/vim-speeddating
 jceb/vim-orgmode=https://github.com/jceb/vim-orgmode
 fatih/vim-hclfmt=https://github.com/fatih/vim-hclfmt.git
+airblade/vim-rooter=https://github.com/airblade/vim-rooter.git
