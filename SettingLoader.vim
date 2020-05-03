@@ -29,6 +29,9 @@ function SettingLoader#Load() dict
   set laststatus=2                                            " Always show the status line
   set history=20                                              " Remember the last 20 commands
   set nopaste                                                 " In insert mode always use nopaste for tab completion to work properly
+  set cmdheight=2                                             " Give more space for displaying messages
+  set updatetime=300                                          " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience
+  set signcolumn=yes                                          " Always show the signcolumn, otherwise it would shift the text each time diagnostics appear/become resolved
 
   set listchars=""          " Reset the listchars
   set listchars+=tab:\ \    " List tab as 2 spaces
