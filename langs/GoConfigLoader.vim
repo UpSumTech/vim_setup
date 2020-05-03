@@ -19,6 +19,7 @@ function langs#GoConfigLoader#Load() dict
     autocmd FileType go nmap <leader><S-g>v <Plug>(go-def-vertical)
     autocmd FileType go nmap <leader><S-g>i <Plug>(go-implements)
     autocmd FileType go nmap <leader><S-g>n <Plug>(go-rename)
+    " Reminder to use C-x C-o for omni-completion
 
     " Please open the quickfix window to execute the following
     autocmd FileType go nmap <leader><S-g><S-g> :VimTool go_get_project_deps<CR><CR>

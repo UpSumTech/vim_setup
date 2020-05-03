@@ -43,19 +43,20 @@ function langs#JavaScalaConfigLoader#Load() dict
     autocmd FileType java nested nmap <silent> <buffer> <localLeader>jN <Plug>(JavaComplete-Generate-ClassInFile)
     autocmd FileType java nested let g:JavaComplete_ClosingBrace = 1
     autocmd FileType java nested let g:JavaComplete_StaticImportsAtTop = 1
-    " Use C-x C-o for omni-completion
+    " Reminder to use C-x C-o for omni-completion
 
-    autocmd FileType java,scala nested nnoremap <buffer> <silent> <LocalLeader>t :EnType<CR> |
-    autocmd FileType java,scala nested xnoremap <buffer> <silent> <LocalLeader>t :EnType selection<CR> |
-    autocmd FileType java,scala nested nnoremap <buffer> <silent> <LocalLeader>T :EnTypeCheck<CR>
-    autocmd FileType java,scala nested nnoremap <buffer> <silent> K  :EnDocBrowse<CR>
-    autocmd FileType java,scala nested nnoremap <buffer> <silent> gd :EnDeclaration<CR>
-    autocmd FileType java,scala nested nnoremap <buffer> <silent> <C-g>]  :EnDeclaration<CR>
-    autocmd FileType java,scala nested nnoremap <buffer> <silent> <C-w>] :EnDeclarationSplit<CR>
-    autocmd FileType java,scala nested nnoremap <buffer> <silent> <C-v>] :EnDeclarationSplit v<CR>
-    autocmd FileType java,scala nested nnoremap <buffer> <silent> <LocalLeader>i :EnInspectType<CR>
-    autocmd FileType java,scala nested nnoremap <buffer> <silent> <LocalLeader>I :EnSuggestImport<CR>
-    autocmd FileType java,scala nested nnoremap <buffer> <silent> <LocalLeader>r :EnRename<CR>
+    " Ensime has gotten deprecated
+    " autocmd FileType java,scala nested nnoremap <buffer> <silent> <LocalLeader>t :EnType<CR> |
+    " autocmd FileType java,scala nested xnoremap <buffer> <silent> <LocalLeader>t :EnType selection<CR> |
+    " autocmd FileType java,scala nested nnoremap <buffer> <silent> <LocalLeader>T :EnTypeCheck<CR>
+    " autocmd FileType java,scala nested nnoremap <buffer> <silent> K  :EnDocBrowse<CR>
+    " autocmd FileType java,scala nested nnoremap <buffer> <silent> gd :EnDeclaration<CR>
+    " autocmd FileType java,scala nested nnoremap <buffer> <silent> <C-g>]  :EnDeclaration<CR>
+    " autocmd FileType java,scala nested nnoremap <buffer> <silent> <C-w>] :EnDeclarationSplit<CR>
+    " autocmd FileType java,scala nested nnoremap <buffer> <silent> <C-v>] :EnDeclarationSplit v<CR>
+    " autocmd FileType java,scala nested nnoremap <buffer> <silent> <LocalLeader>i :EnInspectType<CR>
+    " autocmd FileType java,scala nested nnoremap <buffer> <silent> <LocalLeader>I :EnSuggestImport<CR>
+    " autocmd FileType java,scala nested nnoremap <buffer> <silent> <LocalLeader>r :EnRename<CR>
   augroup END
 endfunction langs#JavaScalaConfigLoader#load
 
