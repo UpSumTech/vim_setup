@@ -32,6 +32,7 @@ function SettingLoader#Load() dict
   set cmdheight=2                                             " Give more space for displaying messages
   set updatetime=300                                          " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable delays and poor user experience
   set signcolumn=yes                                          " Always show the signcolumn, otherwise it would shift the text each time diagnostics appear/become resolved
+  set hidden                                                  " To hide the buffer when it is abandoned instead of unloading it for lsp servers to work
 
   set listchars=""          " Reset the listchars
   set listchars+=tab:\ \    " List tab as 2 spaces

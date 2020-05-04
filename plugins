@@ -58,3 +58,6 @@ tpope/vim-speeddating=https://github.com/tpope/vim-speeddating
 jceb/vim-orgmode=https://github.com/jceb/vim-orgmode
 fatih/vim-hclfmt=https://github.com/fatih/vim-hclfmt.git
 airblade/vim-rooter=https://github.com/airblade/vim-rooter.git
+prabirshrestha/async.vim=https://github.com/prabirshrestha/async.vim.git
+prabirshrestha/vim-lsp=https://github.com/prabirshrestha/vim-lsp.git
+mattn/vim-lsp-settings=https://github.com/mattn/vim-lsp-settings.git

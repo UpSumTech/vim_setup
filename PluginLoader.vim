@@ -253,10 +253,6 @@ function s:LoadNeomakeSettings()
   nnoremap <c-m> :TNeomake<CR>
 endfunction
 
-function s:LoadJavaCompleteSettings()
-  let g:JavaComplete_EnableDefaultMappings = 0
-endfunction
-
 function s:LoadEasyGrepSettings()
   let g:EasyGrepCommand=1 " Use grepprg for searching
   let g:EasyGrepMode=0 " Search all files
@@ -281,6 +277,36 @@ function s:LoadEasyGrepSettings()
   vmap <silent> <c-g>R <plug>EgMapReplaceSelection_R
 endfunction
 
+function s:LoadJavaCompleteSettings()
+  let g:JavaComplete_EnableDefaultMappings = 0
+  let g:JavaComplete_ClosingBrace = 1
+  " Uncomment the next line if it becomes a problem
+  " let g:JavaComplete_AutoStartServer = 0 " Dont start the javavi server at start
+  let g:JavaComplete_IgnoreErrorMsg = 1 " vim-lsp is doing the error checks, disable this for javacomplete2
+endfunction
+
+function! s:on_lsp_buffer_enabled() abort
+  setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
+  autocmd BufWritePre <buffer> call execute('LspCodeActionSync source.organizeImports')
+  xnoremap <buffer> <silent> <c-l>t :LspTypeDefinition selection<CR>
+  nnoremap <buffer> <silent> <c-l>th :LspTypeHierarchy<CR>
+  nnoremap <buffer> <silent> <c-l>d :LspDefinition<CR>
+  nnoremap <buffer> <silent> <c-l>i :LspImplementation<CR>
+  nnoremap <buffer> <silent> <c-l>fef :LspDocumentFormat<CR>
+  nnoremap <buffer> <silent> <c-l>f :LspDocumentFold<CR>
+  nnoremap <buffer> <silent> <c-l>s :LspDocumentSymbol<CR>
+  nnoremap <buffer> <silent> <c-l>r :LspRename<CR>
+  nnoremap <buffer> <silent> <c-l>ne :LspNextError<CR>
+  nnoremap <buffer> <silent> <c-l>pe :LspPreviousError<CR>
+  nnoremap <buffer> <silent> <c-l>nw :LspNextWarning<CR>
+  nnoremap <buffer> <silent> <c-l>pw :LspPreviousWarning<CR>
+  nnoremap <buffer> <silent> <c-l>ar :LspReferences<CR>
+  nnoremap <buffer> <silent> <c-l>nr :LspNextReference<CR>
+  nnoremap <buffer> <silent> <c-l>pr :LspPreviousReference<CR>
+endfunction
+
+
 function PluginLoader#Load() dict
   call s:BundlePlugins()
   call s:LoadFileBrowserSettings()
@@ -299,7 +325,10 @@ function PluginLoader#Load() dict
   call s:LoadEasyGrepSettings()
   call s:LoadSplitJoinSettings()
   call s:LoadIndentLineSettings()
-  call s:LoadJavaCompleteSettings()
+  call s:LoadVimLspSettings()
+  if exists('g:is_javacomplete2_plugin_enabled') && g:is_javacomplete2_plugin_enabled == 1
+    call s:LoadJavaCompleteSettings()
+  endif
   return
 endfunction PluginLoader#Load
 

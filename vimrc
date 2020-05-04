@@ -9,6 +9,16 @@ if has('vim_starting')
   endif
 endif
 
+let g:lsp_enabled_langs = {
+  \ 'java': 1,
+  \ }
+
+if g:lsp_enabled_langs.java == 1
+  let g:is_javacomplete2_plugin_enabled = 1
+else
+  let g:is_javacomplete2_plugin_enabled = 1
+endif
+
 function s:LoadPlugins()
   if filereadable(expand("~/.vim/PluginLoader.vim"))
     source ~/.vim/PluginLoader.vim
@@ -112,5 +122,13 @@ call s:LoadSettings()
 call s:LoadCommands()
 call s:LoadLanguageConfigs()
 call s:LoadMappings()
+
+if g:lsp_enabled_langs.java == 1 && executable('eclipse-jdt-ls')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'eclipse-jdt-ls',
+    \ 'cmd': {server_info->['eclipse-jdt-ls']},
+    \ 'whitelist': ['java'],
+    \ })
+endif
 
 command -nargs=1 Quit :qa
