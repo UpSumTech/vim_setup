@@ -306,7 +306,6 @@ function! s:on_lsp_buffer_enabled() abort
   nnoremap <buffer> <silent> <c-l>pr :LspPreviousReference<CR>
 endfunction
 
-
 function PluginLoader#Load() dict
   call s:BundlePlugins()
   call s:LoadFileBrowserSettings()
