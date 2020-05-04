@@ -292,6 +292,7 @@ function! s:on_lsp_buffer_enabled() abort
   xnoremap <buffer> <silent> <c-l>t :LspTypeDefinition selection<CR>
   nnoremap <buffer> <silent> <c-l>th :LspTypeHierarchy<CR>
   nnoremap <buffer> <silent> <c-l>d :LspDefinition<CR>
+  nnoremap <buffer> <silent> <c-]> :LspDefinition<CR>
   nnoremap <buffer> <silent> <c-l>i :LspImplementation<CR>
   nnoremap <buffer> <silent> <c-l>fef :LspDocumentFormat<CR>
   nnoremap <buffer> <silent> <c-l>f :LspDocumentFold<CR>
@@ -304,6 +305,21 @@ function! s:on_lsp_buffer_enabled() abort
   nnoremap <buffer> <silent> <c-l>ar :LspReferences<CR>
   nnoremap <buffer> <silent> <c-l>nr :LspNextReference<CR>
   nnoremap <buffer> <silent> <c-l>pr :LspPreviousReference<CR>
+endfunction
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+function s:LoadTabAutoCompletion()
+  let g:asyncomplete_auto_popup = 0
+  inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ asyncomplete#force_refresh()
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 endfunction
 
 function PluginLoader#Load() dict
@@ -328,6 +344,7 @@ function PluginLoader#Load() dict
   if exists('g:is_javacomplete2_plugin_enabled') && g:is_javacomplete2_plugin_enabled == 1
     call s:LoadJavaCompleteSettings()
   endif
+  call s:LoadTabAutoCompletion()
   return
 endfunction PluginLoader#Load
 
