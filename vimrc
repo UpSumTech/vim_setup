@@ -20,6 +20,7 @@ let g:lsp_enabled_langs = {
   \ 'terraform': 1,
   \ 'bash': 1,
   \ 'vim': 1,
+  \ 'docker': 1,
   \ }
 
 if g:lsp_enabled_langs.java == 1
@@ -211,6 +212,15 @@ if g:lsp_enabled_langs.vim == 1 && executable('vim-language-server')
     \ 'name': 'vim-language-server',
     \ 'cmd': {server_info->['vim-language-server']},
     \ 'whitelist': ['vim'],
+    \ })
+endif
+
+" TODO : Remember to install the language server for docker
+if g:lsp_enabled_langs.docker == 1 && executable('docker-langserver')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'docker-langserver',
+    \ 'cmd': {server_info->['docker-langserver']},
+    \ 'whitelist': ['dockerfile'],
     \ })
 endif
 
