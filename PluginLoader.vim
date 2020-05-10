@@ -307,6 +307,14 @@ function! s:on_lsp_buffer_enabled() abort
   nnoremap <buffer> <silent> <c-l>pr :LspPreviousReference<CR>
 endfunction
 
+function s:LoadVimLspSettings()
+  augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+  augroup END
+endfunction
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~ '\s'

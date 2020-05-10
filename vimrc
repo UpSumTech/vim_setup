@@ -11,6 +11,7 @@ endif
 
 let g:lsp_enabled_langs = {
   \ 'java': 1,
+  \ 'ruby': 1,
   \ }
 
 if g:lsp_enabled_langs.java == 1
@@ -123,11 +124,22 @@ call s:LoadCommands()
 call s:LoadLanguageConfigs()
 call s:LoadMappings()
 
+" TODO : Remember to install the language server for java
 if g:lsp_enabled_langs.java == 1 && executable('eclipse-jdt-ls')
   au User lsp_setup call lsp#register_server({
     \ 'name': 'eclipse-jdt-ls',
     \ 'cmd': {server_info->['eclipse-jdt-ls']},
     \ 'whitelist': ['java'],
+    \ })
+endif
+
+" TODO : Remember to install solargraph - ruby bundler path will be ~/.rbenv/shims/bundle
+" The path of ruby's bundler might conflict with go's bundle binary, so may be temporarily change that
+if g:lsp_enabled_langs.ruby == 1 && executable('solargraph')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'solargraph',
+    \ 'cmd': {server_info->['solargraph']},
+    \ 'whitelist': ['ruby'],
     \ })
 endif
 
