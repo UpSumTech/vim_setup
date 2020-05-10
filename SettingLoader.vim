@@ -24,7 +24,7 @@ function SettingLoader#Load() dict
   set wildmode=list:longest,full                              " Completion for wildchar in command mode
   set wildmenu
   set background=dark
-  set completeopt=menu,longest
+  set completeopt=menu,longest,menuone,preview
   set omnifunc=syntaxcomplete#Complete                        " This is overriden by syntax plugins.
   set laststatus=2                                            " Always show the status line
   set history=20                                              " Remember the last 20 commands
