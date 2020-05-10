@@ -12,6 +12,8 @@ endif
 let g:lsp_enabled_langs = {
   \ 'java': 1,
   \ 'ruby': 1,
+  \ 'python': 1,
+  \ 'terraform': 1,
   \ }
 
 if g:lsp_enabled_langs.java == 1
@@ -140,6 +142,24 @@ if g:lsp_enabled_langs.ruby == 1 && executable('solargraph')
     \ 'name': 'solargraph',
     \ 'cmd': {server_info->['solargraph']},
     \ 'whitelist': ['ruby'],
+    \ })
+endif
+
+" TODO : Remember to install the language server for python
+if g:lsp_enabled_langs.python == 1 && executable('pyls')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'pyls',
+    \ 'cmd': {server_info->['pyls']},
+    \ 'whitelist': ['python'],
+    \ })
+endif
+
+" TODO : Remember to install the language server for terraform
+if g:lsp_enabled_langs.terraform == 1 && executable('terraform-lsp')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'terraform-lsp',
+    \ 'cmd': {server_info->['terraform-lsp']},
+    \ 'whitelist': ['terraform'],
     \ })
 endif
 
