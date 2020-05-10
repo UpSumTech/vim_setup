@@ -18,6 +18,8 @@ let g:lsp_enabled_langs = {
   \ 'typescript': 1,
   \ 'javascript': 1,
   \ 'terraform': 1,
+  \ 'bash': 1,
+  \ 'vim': 1,
   \ }
 
 if g:lsp_enabled_langs.java == 1
@@ -191,6 +193,24 @@ if g:lsp_enabled_langs.typescript == 1 && executable('typescript-language-server
     \ 'name': 'typescript-language-server',
     \ 'cmd': {server_info->['typescript-language-server']},
     \ 'whitelist': ['typescript', 'javascript'],
+    \ })
+endif
+
+" TODO : Remember to install the language server for bash
+if g:lsp_enabled_langs.bash == 1 && executable('bash-language-server')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'bash-language-server',
+    \ 'cmd': {server_info->['bash-language-server']},
+    \ 'whitelist': ['shell'],
+    \ })
+endif
+
+" TODO : Remember to install the language server for vim
+if g:lsp_enabled_langs.vim == 1 && executable('vim-language-server')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'vim-language-server',
+    \ 'cmd': {server_info->['vim-language-server']},
+    \ 'whitelist': ['vim'],
     \ })
 endif
 
