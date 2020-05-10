@@ -11,8 +11,12 @@ endif
 
 let g:lsp_enabled_langs = {
   \ 'java': 1,
+  \ 'scala': 1,
+  \ 'groovy': 1,
   \ 'ruby': 1,
   \ 'python': 1,
+  \ 'typescript': 1,
+  \ 'javascript': 1,
   \ 'terraform': 1,
   \ }
 
@@ -160,6 +164,33 @@ if g:lsp_enabled_langs.terraform == 1 && executable('terraform-lsp')
     \ 'name': 'terraform-lsp',
     \ 'cmd': {server_info->['terraform-lsp']},
     \ 'whitelist': ['terraform'],
+    \ })
+endif
+
+" TODO : Remember to install the language server for scala
+if g:lsp_enabled_langs.scala == 1 && executable('metals')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'metals',
+    \ 'cmd': {server_info->['metals']},
+    \ 'whitelist': ['scala'],
+    \ })
+endif
+
+" TODO : Remember to install the language server for groovy
+if g:lsp_enabled_langs.groovy == 1 && executable('groovy-language-server')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'groovy-language-server',
+    \ 'cmd': {server_info->['groovy-language-server']},
+    \ 'whitelist': ['groovy'],
+    \ })
+endif
+
+" TODO : Remember to install the language server for typescript
+if g:lsp_enabled_langs.typescript == 1 && executable('typescript-language-server')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'typescript-language-server',
+    \ 'cmd': {server_info->['typescript-language-server']},
+    \ 'whitelist': ['typescript', 'javascript'],
     \ })
 endif
 
