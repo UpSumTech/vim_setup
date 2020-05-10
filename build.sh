@@ -2,9 +2,15 @@
 
 target="${HOME}/.vim"
 
+export PID="$$" # Get parent pid so that you can kill the main proc from subshells
 die() {
-  echo "${@}"
+  echo >&2 "Error : $*"
+  kill -s TERM $PID
   exit 1
+}
+
+ok() {
+  echo -n ''
 }
 
 main() {
@@ -22,6 +28,7 @@ main() {
     echo '  \ "\"'"$pluginName"'\"",' >> "$fileName"
   done < "plugins"
   echo '\ ]' >> "$fileName"
+  ok
 }
 
 main

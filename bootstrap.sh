@@ -8,9 +8,15 @@ compilerPluginDir="$target/compiler"
 indentPluginDir="$target/indent"
 omniCompletionPluginDir="$target/omnicompletion"
 
+export PID="$$" # Get parent pid so that you can kill the main proc from subshells
 die() {
-  echo "${@}"
+  echo >&2 "Error : $*"
+  kill -s TERM $PID
   exit 1
+}
+
+ok() {
+  echo -n ''
 }
 
 MoveOldVimFilesAndDirs() {
@@ -95,6 +101,22 @@ CreateOmniCompletionPlugins() {
   cp "$pluginDir/vim-ruby/autoload/rubycomplete.vim" "$omniCompletionPluginDir/rubycomplete.vim"
 }
 
+PostInstallInstructions() {
+  echo "
+  >> Install these LSP servers :
+    :LspInstallServer eclipse-jdt-ls
+    :LspInstallServer solargraph
+    :LspInstallServer pyls
+    :LspInstallServer terraform-lsp
+    :LspInstallServer metals
+    :LspInstallServer groovy-language-server
+    :LspInstallServer typescript-language-server
+    :LspInstallServer bash-language-server
+    :LspInstallServer vim-language-server
+    :LspInstallServer docker-langserver
+  "
+}
+
 main() {
   MoveOldVimFilesAndDirs
   CopySetup
@@ -108,6 +130,8 @@ main() {
   CreateIndentPlugins
   CreateOmniCompletionPlugins
   make || die "Build failed"
+  PostInstallInstructions
+  ok
 }
 
 main
