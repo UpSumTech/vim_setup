@@ -344,13 +344,13 @@ function s:LoadVimVistaSettings()
     \ 'python': 'vim_lsp',
     \ 'java': 'vim_lsp',
     \ 'scala': 'vim_lsp',
-    \ 'terraform': 'vim_lsp',
     \ 'vim': 'vim_lsp',
     \ 'ruby': 'vim_lsp',
     \ 'javascript': 'vim_lsp',
     \ 'typescript': 'vim_lsp',
     \ 'groovy': 'vim_lsp',
     \ 'dockerfile': 'vim_lsp',
+    \ 'bash': 'vim_lsp',
     \ }
   " Declare the command including the executable and options used to generate ctags output
   let g:vista_ctags_cmd = {

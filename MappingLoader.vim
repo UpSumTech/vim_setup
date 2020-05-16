@@ -41,6 +41,9 @@ function MappingLoader#Load() dict
     noremap <c-]> :execute "tag " . expand("<cword>")<cr>
   endif
 
+  " Open the tag navigation menu for Vista
+  nmap <c-t>t :Vista!!<CR>
+
   if has("cscope")
     " use both cscope and ctag for 'ctrl-]', ':ta', and 'vim -t'
     set cscopetag
