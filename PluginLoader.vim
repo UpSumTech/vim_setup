@@ -330,6 +330,34 @@ function s:LoadTabAutoCompletion()
   autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 endfunction
 
+function s:LoadVimAirlineSettings()
+  let g:airline_solarized_bg='dark' " Use the dark solarized background for the tabline
+  let g:airline#extensions#tagbar#enabled = 0 " Disable tagbar plugin
+  let g:airline#extensions#tabline#formatter = 'unique_tail_improved' " Displays filenames in the tabline
+endfunction
+
+function s:LoadVimVistaSettings()
+  let g:vista_icon_indent = ["▸ ", ""] " How each level is indented and what to prepend
+  let g:vista_default_executive = 'ctags' " Set the default tag generator for vista
+  " Set the executive for some filetypes explicitly
+  let g:vista_executive_for = {
+    \ 'python': 'vim_lsp',
+    \ 'java': 'vim_lsp',
+    \ 'scala': 'vim_lsp',
+    \ 'terraform': 'vim_lsp',
+    \ 'vim': 'vim_lsp',
+    \ 'ruby': 'vim_lsp',
+    \ 'javascript': 'vim_lsp',
+    \ 'typescript': 'vim_lsp',
+    \ 'groovy': 'vim_lsp',
+    \ 'dockerfile': 'vim_lsp',
+    \ }
+  " Declare the command including the executable and options used to generate ctags output
+  let g:vista_ctags_cmd = {
+    \ 'go': 'gotags -silent -sort',
+    \ }
+endfunction
+
 function PluginLoader#Load() dict
   call s:BundlePlugins()
   call s:LoadFileBrowserSettings()
@@ -353,6 +381,8 @@ function PluginLoader#Load() dict
     call s:LoadJavaCompleteSettings()
   endif
   call s:LoadTabAutoCompletion()
+  call s:LoadVimAirlineSettings()
+  call s:LoadVimVistaSettings()
   return
 endfunction PluginLoader#Load
 

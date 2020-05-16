@@ -126,9 +126,6 @@ function MappingLoader#Load() dict
   " Git pull and reload the current buffer
   nnoremap <leader>gp :GitPullAndReload<CR><CR>
 
-  " Toggle tag bar
-  nmap <F8> :TagbarToggle<CR>
-
   " Toggle undo tree
   nnoremap <leader>ut :UndotreeToggle<CR>
 
