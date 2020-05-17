@@ -105,11 +105,13 @@ endfunction
 function s:OpenConsoleOnTmux()
   if executable('tmux')
     if !exists('g:current_tmux_session') && !exists('g:vim_tmux_window')
-      let g:current_tmux_session = system('tmux display-message -p '.shellescape('"#{session_id}"'))
-      let g:vim_tmux_window = system('tmux display-message -p '.shellescape('"#{window_id}"'))
-      let g:vim_tmux_pane = system('tmux display-message -p '.shellescape('"#{pane_id}"'))
+      let l:temp_current_tmux_session = substitute(system('tmux display-message -p '.shellescape('"#{session_id}"')), '"', '', 'g')
+      let g:current_tmux_session = substitute(l:temp_current_tmux_session, '\n', '', 'g')
+      let l:temp_vim_tmux_window = substitute(system('tmux display-message -p '.shellescape('"#{window_id}"')), '"', '', 'g')
+      let g:vim_tmux_window = substitute(l:temp_vim_tmux_window, '\n', '', 'g')
+      let l:temp_vim_tmux_pane = substitute(system('tmux display-message -p '.shellescape('"#{pane_id}"')), '"', '', 'g')
+      let g:vim_tmux_pane = substitute(l:temp_vim_tmux_pane, '\n', '', 'g')
     endif
-
     if !exists('g:vim_tmux_console_pane')
       let g:vim_tmux_console_pane = 1
       execute '!tmux split-window -d -v -p 15 -t '.g:vim_tmux_window
@@ -120,7 +122,9 @@ endfunction
 function s:CloseConsoleOnTmux()
   if executable('tmux')
     if exists('g:vim_tmux_console_pane')
-      execute '!tmux kill-pane -t '.g:vim_tmux_console_pane
+      let l:temp_tmux_pane_to_close = substitute(system('tmux list-panes -F '.shellescape('"#{pane_id}"').' -t '.shellescape(g:vim_tmux_window).' | grep -v '.shellescape(g:vim_tmux_pane).' | sort -r | head -n 1'), '"', '', 'g')
+      let l:tmux_pane_to_close = substitute(substitute(l:temp_tmux_pane_to_close, '\n', '', 'g'), '%', '', 'g')
+      execute '!tmux kill-pane -t '.shellescape('\%'.l:tmux_pane_to_close)
       unlet g:vim_tmux_console_pane
     end
   end
