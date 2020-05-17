@@ -305,6 +305,9 @@ function! s:on_lsp_buffer_enabled() abort
   nnoremap <buffer> <silent> <c-l>ar :LspReferences<CR>
   nnoremap <buffer> <silent> <c-l>nr :LspNextReference<CR>
   nnoremap <buffer> <silent> <c-l>pr :LspPreviousReference<CR>
+  set foldmethod=expr
+    \ foldexpr=lsp#ui#vim#folding#foldexpr()
+    \ foldtext=lsp#ui#vim#folding#foldtext()
 endfunction
 
 function s:LoadVimLspSettings()
