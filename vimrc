@@ -164,7 +164,7 @@ for item in items(g:language_servers)
     au User lsp_setup call lsp#register_server({
       \ 'name': ft_lsp_server,
       \ 'cmd': {server_info->[ft_lsp_server]},
-      \ 'whitelist': [ft_lang],
+      \ 'whitelist': ft_lsp_server == 'typescript-language-server' ? ['javascript', 'typescript'] : [ft_lang],
       \ })
   endif
 endfor
