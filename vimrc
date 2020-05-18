@@ -9,6 +9,19 @@ if has('vim_starting')
   endif
 endif
 
+let g:language_servers = {
+  \ 'java': 'eclipse-jdt-ls',
+  \ 'scala': 'metals',
+  \ 'groovy': 'groovy-language-server',
+  \ 'ruby': 'solargraph',
+  \ 'python': 'pyls',
+  \ 'typescript': 'typescript-language-server',
+  \ 'terraform': 'terraform-lsp',
+  \ 'shell': 'bash-language-server',
+  \ 'vim': 'vim-language-server',
+  \ 'dockerfile': 'docker-langserver',
+  \ }
+
 let g:lsp_enabled_langs = {
   \ 'java': 1,
   \ 'scala': 1,
@@ -18,10 +31,12 @@ let g:lsp_enabled_langs = {
   \ 'typescript': 1,
   \ 'javascript': 1,
   \ 'terraform': 1,
-  \ 'bash': 1,
+  \ 'shell': 1,
   \ 'vim': 1,
-  \ 'docker': 1,
+  \ 'dockerfile': 1,
   \ }
+
+let g:lsp_servers_installed = split(substitute(system('find $HOME/.local/share/vim-lsp-settings/servers -maxdepth 1 -type d -exec basename {} \;'), '"', '', 'g'), '\n')[1:-1]
 
 if g:lsp_enabled_langs.java == 1
   let g:is_javacomplete2_plugin_enabled = 1
@@ -142,86 +157,16 @@ if g:lsp_enabled_langs.java == 1 && executable('eclipse-jdt-ls')
     \ })
 endif
 
-" TODO : Remember to install solargraph - ruby bundler path will be ~/.rbenv/shims/bundle
-" The path of ruby's bundler might conflict with go's bundle binary, so may be temporarily change that
-if g:lsp_enabled_langs.ruby == 1 && executable('solargraph')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'solargraph',
-    \ 'cmd': {server_info->['solargraph']},
-    \ 'whitelist': ['ruby'],
-    \ })
-endif
-
-" TODO : Remember to install the language server for python
-if g:lsp_enabled_langs.python == 1 && executable('pyls')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'pyls',
-    \ 'cmd': {server_info->['pyls']},
-    \ 'whitelist': ['python'],
-    \ })
-endif
-
-" TODO : Remember to install the language server for terraform
-if g:lsp_enabled_langs.terraform == 1 && executable('terraform-lsp')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'terraform-lsp',
-    \ 'cmd': {server_info->['terraform-lsp']},
-    \ 'whitelist': ['terraform'],
-    \ })
-endif
-
-" TODO : Remember to install the language server for scala
-if g:lsp_enabled_langs.scala == 1 && executable('metals')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'metals',
-    \ 'cmd': {server_info->['metals']},
-    \ 'whitelist': ['scala'],
-    \ })
-endif
-
-" TODO : Remember to install the language server for groovy
-if g:lsp_enabled_langs.groovy == 1 && executable('groovy-language-server')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'groovy-language-server',
-    \ 'cmd': {server_info->['groovy-language-server']},
-    \ 'whitelist': ['groovy'],
-    \ })
-endif
-
-" TODO : Remember to install the language server for typescript
-if g:lsp_enabled_langs.typescript == 1 && executable('typescript-language-server')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'typescript-language-server',
-    \ 'cmd': {server_info->['typescript-language-server']},
-    \ 'whitelist': ['typescript', 'javascript'],
-    \ })
-endif
-
-" TODO : Remember to install the language server for bash
-if g:lsp_enabled_langs.bash == 1 && executable('bash-language-server')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'bash-language-server',
-    \ 'cmd': {server_info->['bash-language-server']},
-    \ 'whitelist': ['shell'],
-    \ })
-endif
-
-" TODO : Remember to install the language server for vim
-if g:lsp_enabled_langs.vim == 1 && executable('vim-language-server')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'vim-language-server',
-    \ 'cmd': {server_info->['vim-language-server']},
-    \ 'whitelist': ['vim'],
-    \ })
-endif
-
-" TODO : Remember to install the language server for docker
-if g:lsp_enabled_langs.docker == 1 && executable('docker-langserver')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'docker-langserver',
-    \ 'cmd': {server_info->['docker-langserver']},
-    \ 'whitelist': ['dockerfile'],
-    \ })
-endif
+for item in items(g:language_servers)
+  let ft_lang = item[0]
+  let ft_lsp_server = item[1]
+  if g:lsp_enabled_langs[ft_lang] == 1 && index(g:lsp_servers_installed, ft_lsp_server) >= 0
+    au User lsp_setup call lsp#register_server({
+      \ 'name': ft_lsp_server,
+      \ 'cmd': {server_info->[ft_lsp_server]},
+      \ 'whitelist': [ft_lang],
+      \ })
+  endif
+endfor
 
 command -nargs=1 Quit :qa

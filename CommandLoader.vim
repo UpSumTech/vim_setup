@@ -144,6 +144,14 @@ function s:SearchAndReplace(search, replace)
   set confirm
 endfunction
 
+function s:InstallLspServers()
+  for item in items(g:language_servers)
+    if &ft == item[0] && index(g:lsp_servers_installed, item[1]) < 0
+      execute 'LspInstallServer'
+    endif
+  endfor
+endfunction
+
 function CommandLoader#Load() dict
   " Commands
   command! BClose call <SID>BufferClose()
@@ -167,6 +175,7 @@ function CommandLoader#Load() dict
   autocmd TabLeave * call <SID>MarkLastTab()
   autocmd BufWritePre * :call <SID>RemoveTrailingSpaces()
   autocmd BufNewFile,BufRead *.org,*.md setlocal spell spelllang=en_US complete+=kspell
+  autocmd BufReadPost * call s:InstallLspServers()
 endfunction CommandLoader#Load
 
 function CommandLoader#New()
