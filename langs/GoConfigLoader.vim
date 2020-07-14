@@ -10,19 +10,18 @@ function langs#GoConfigLoader#Load() dict
     let g:go_highlight_operators = 1
     let g:go_highlight_extra_types = 1
 
-    autocmd FileType go nested let b:maplocalleader="\\"
-    autocmd FileType go nnoremap <LocalLeader>r <Plug>(go-run)
-    autocmd FileType go nnoremap <LocalLeader>b <Plug>(go-build)
-    autocmd FileType go nnoremap <LocalLeader>t <Plug>(go-test)
-    autocmd FileType go nnoremap <LocalLeader>K <Plug>(go-doc)
-    autocmd FileType go nnoremap <LocalLeader>c <Plug>(go-coverage)
-    autocmd FileType go nnoremap <LocalLeader>s <Plug>(go-def-split)
-    autocmd FileType go nnoremap <LocalLeader>v <Plug>(go-def-vertical)
-    autocmd FileType go nnoremap <LocalLeader>ec <Plug>(go-err-check)
-    autocmd FileType go nnoremap <LocalLeader>cs <Plug>(go-callstack)
-    autocmd FileType go nnoremap <LocalLeader>ife <Plug>(go-if-err)
-    autocmd FileType go nnoremap <LocalLeader>fst :GoFillStruct<CR>
-    autocmd FileType go nnoremap <LocalLeader>kfy :GoKeyify<CR>
+    autocmd FileType go nnoremap <c-l>gr <Plug>(go-run)
+    autocmd FileType go nnoremap <c-l>gb <Plug>(go-build)
+    autocmd FileType go nnoremap <c-l>gt <Plug>(go-test)
+    autocmd FileType go nnoremap <c-l>K <Plug>(go-doc)
+    autocmd FileType go nnoremap <c-l>gc <Plug>(go-coverage)
+    autocmd FileType go nnoremap <c-l>s <Plug>(go-def-split)
+    autocmd FileType go nnoremap <c-l>v <Plug>(go-def-vertical)
+    autocmd FileType go nnoremap <c-l>ec <Plug>(go-err-check)
+    autocmd FileType go nnoremap <c-l>cs <Plug>(go-callstack)
+    autocmd FileType go nnoremap <c-l>ife <Plug>(go-if-err)
+    autocmd FileType go nnoremap <c-l>fst :GoFillStruct<CR>
+    autocmd FileType go nnoremap <c-l>kfy :GoKeyify<CR>
 
     autocmd FileType go nnoremap <c-l>t <Plug>(go-def-type)
     autocmd FileType go nnoremap <c-l>d <Plug>(go-def)
@@ -33,8 +32,8 @@ function langs#GoConfigLoader#Load() dict
     autocmd FileType go nnoremap <c-l>s :GoDecls <c-r>%<CR>
 
     " Please open the quickfix window to execute the following
-    autocmd FileType go nnoremap <LocalLeader>gg :VimTool go_get_project_deps<CR><CR>
-    autocmd FileType go nnoremap <LocalLeader>gT :VimTool go_test_project<CR>
+    autocmd FileType go nnoremap <c-l>gg :VimTool go_get_project_deps<CR><CR>
+    autocmd FileType go nnoremap <c-l>gT :VimTool go_test_project<CR>
   augroup END
 endfunction langs#GoConfigLoader#Load
 
