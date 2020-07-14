@@ -164,7 +164,7 @@ function s:LoadSyntaxCheckingSettings()
     let g:syntastic_mode_map                 = {
           \ "mode": "passive",
           \ "active_filetypes": [],
-          \ "passive_filetypes": []
+          \ "passive_filetypes": ["go"]
           \ }
 
     command! TSyntaxCheck call <SID>ToggleSyntaxCheck()
