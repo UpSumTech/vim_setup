@@ -151,21 +151,20 @@ function s:LoadSyntaxCheckingSettings()
     let g:syntastic_check_on_wq              = 0 " Disable syntax check when file is written to or closed
     let g:syntastic_sh_checkers              = ['shellcheck', 'checkbashisms', 'sh']
     let g:syntastic_sh_checkbashisms_args    = '-x'
-    let g:syntastic_ruby_checkers            = ['mri', 'jruby', 'rubocop']
-    let g:syntastic_python_checkers          = ['pylint']
+    " let g:syntastic_ruby_checkers            = ['mri', 'jruby', 'rubocop']
+    " let g:syntastic_python_checkers          = ['pylint']
     let g:syntastic_json_checkers            = ['jsonlint']
-    let g:syntastic_python_checkers          = ['pylint']
     let g:syntastic_terraform_checkers       = ['tflint']
-    let g:syntastic_ruby_rubocop_args        = '--display-cop-names'
+    " let g:syntastic_ruby_rubocop_args        = '--display-cop-names'
     let g:syntastic_scss_checkers            = ['sass']
     let g:syntastic_sass_checkers            = ['sass']
     let g:syntastic_yaml_checkers            = ['jsyaml'] " npm install js-yaml
-    let g:syntastic_go_checkers              = ['gometalinter'] " go get github.com/alecthomas/gometalinter && gometalinter --install
-    let g:syntastic_mode_map                 = {
-          \ "mode": "passive",
-          \ "active_filetypes": [],
-          \ "passive_filetypes": ["go"]
-          \ }
+    " let g:syntastic_go_checkers              = ['gometalinter'] " go get github.com/alecthomas/gometalinter && gometalinter --install
+    " let g:syntastic_mode_map                 = {
+          " \ "mode": "passive",
+          " \ "active_filetypes": [],
+          " \ "passive_filetypes": ["go"]
+          " \ }
 
     command! TSyntaxCheck call <SID>ToggleSyntaxCheck()
     nnoremap <leader><space> :TSyntaxCheck<CR>
