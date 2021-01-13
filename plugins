@@ -67,3 +67,4 @@ prabirshrestha/asyncomplete-lsp.vim=https://github.com/prabirshrestha/asyncomple
 mattn/vim-lsp-settings=https://github.com/mattn/vim-lsp-settings.git
 thomasfaingnaert/vim-lsp-snippets=https://github.com/thomasfaingnaert/vim-lsp-snippets.git
 thomasfaingnaert/vim-lsp-ultisnips=https://github.com/thomasfaingnaert/vim-lsp-ultisnips.git
+uarun/vim-protobuf=https://github.com/uarun/vim-protobuf.git
