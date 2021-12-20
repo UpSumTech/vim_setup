@@ -98,7 +98,9 @@ function s:LoadJavascriptSyntaxSettings()
   let g:javascript_plugin_jsdoc = 1
   let g:javascript_plugin_ngdoc = 1
   let g:javascript_plugin_flow = 1
-  let g:jsx_ext_required = 1
+  let g:vim_jsx_pretty_colorful_config = 1
+  let g:vim_jsx_pretty_template_tags = ['html', 'jsx', 'js']
+  let g:vim_jsx_pretty_highlight_close_tag = 1
 endfunction
 
 function s:LoadLinterSettings()
