@@ -70,3 +70,4 @@ thomasfaingnaert/vim-lsp-snippets=https://github.com/thomasfaingnaert/vim-lsp-sn
 thomasfaingnaert/vim-lsp-ultisnips=https://github.com/thomasfaingnaert/vim-lsp-ultisnips.git
 uarun/vim-protobuf=https://github.com/uarun/vim-protobuf.git
 rust-lang/rust.vim=https://github.com/rust-lang/rust.vim
+jparise/vim-graphql=https://github.com/jparise/vim-graphql
