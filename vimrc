@@ -15,6 +15,7 @@ let g:language_servers = {
   \ 'groovy': 'groovy-language-server',
   \ 'ruby': 'solargraph',
   \ 'python': 'pyls',
+  \ 'rust': 'rust-analyzer',
   \ 'typescript': 'typescript-language-server',
   \ 'terraform': 'terraform-lsp',
   \ 'shell': 'bash-language-server',
@@ -28,6 +29,7 @@ let g:lsp_enabled_langs = {
   \ 'groovy': 1,
   \ 'ruby': 1,
   \ 'python': 1,
+  \ 'rust': 1,
   \ 'typescript': 1,
   \ 'javascript': 1,
   \ 'terraform': 1,
@@ -36,6 +38,7 @@ let g:lsp_enabled_langs = {
   \ 'dockerfile': 1,
   \ }
 
+" TODO : Remember to install the language server for java
 let g:lsp_servers_installed = split(substitute(system('find $HOME/.local/share/vim-lsp-settings/servers -maxdepth 1 -type d -exec basename {} \;'), '"', '', 'g'), '\n')[1:-1]
 
 if g:lsp_enabled_langs.java == 1
@@ -113,6 +116,7 @@ function s:LoadLanguageConfigs()
     \ "RubyConfigLoader",
     \ "ClojureConfigLoader",
     \ "PureScriptHaskellConfigLoader",
+    \ "RustConfigLoader",
   \ ]
 
   for languageLoader in languageLoaders
@@ -149,14 +153,7 @@ call s:LoadLanguageConfigs()
 call s:LoadMappings()
 
 " TODO : Remember to install the language server for java
-if g:lsp_enabled_langs.java == 1 && executable('eclipse-jdt-ls')
-  au User lsp_setup call lsp#register_server({
-    \ 'name': 'eclipse-jdt-ls',
-    \ 'cmd': {server_info->['eclipse-jdt-ls']},
-    \ 'whitelist': ['java'],
-    \ })
-endif
-
+" The allowlist property used to be called whitelist before
 for item in items(g:language_servers)
   let ft_lang = item[0]
   let ft_lsp_server = item[1]
@@ -164,7 +161,7 @@ for item in items(g:language_servers)
     au User lsp_setup call lsp#register_server({
       \ 'name': ft_lsp_server,
       \ 'cmd': {server_info->[ft_lsp_server]},
-      \ 'whitelist': ft_lsp_server == 'typescript-language-server' ? ['javascript', 'typescript'] : [ft_lang],
+      \ 'allowlist': ft_lsp_server == 'typescript-language-server' ? ['javascript', 'typescript'] : [ft_lang],
       \ })
   endif
 endfor
