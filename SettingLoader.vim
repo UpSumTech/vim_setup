@@ -56,6 +56,10 @@ function SettingLoader#Load() dict
     set grepprg=ag\ -U\ --nogroup\ --nocolor\ --path-to-ignore\ $HOME/.agignore " Use Ag over Grep
   endif
 
+  if executable("fzf")
+    set rtp+=/usr/local/opt/fzf " Add fzf (fuzzy finder) to the runtime path of vim
+  endif
+
   let g:netrw_altv           = 1
   let g:netrw_fastbrowse     = 2
   let g:netrw_keepdir        = 0

@@ -22,6 +22,7 @@ jelera/vim-Javascript-syntax=https://github.com/jelera/vim-Javascript-syntax.git
 elzr/vim-json=https://github.com/elzr/vim-json.git
 pangloss/vim-javascript=https://github.com/pangloss/vim-javascript.git
 MaxMEllon/vim-jsx-pretty=https://github.com/MaxMEllon/vim-jsx-pretty.git
+styled-components/vim-styled-components=https://github.com/styled-components/vim-styled-components.git
 maksimr/vim-jsbeautify=https://github.com/maksimr/vim-jsbeautify.git
 AndrewRadev/splitjoin.vim=https://github.com/AndrewRadev/splitjoin.vim.git
 mattn/emmet-vim=https://github.com/mattn/emmet-vim.git
