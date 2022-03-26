@@ -41,6 +41,11 @@ function MappingLoader#Load() dict
     noremap <c-]> :execute "tag " . expand("<cword>")<cr>
   endif
 
+  if executable('fzf')
+    " Use fzf for finding files easily
+    nnoremap <c-f> :FZF<CR>
+  endif
+
   " Open the tag navigation menu for Vista
   nmap <c-t>t :Vista!!<CR>
 
