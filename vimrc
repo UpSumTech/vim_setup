@@ -21,6 +21,7 @@ let g:language_servers = {
   \ 'shell': 'bash-language-server',
   \ 'vim': 'vim-language-server',
   \ 'dockerfile': 'docker-langserver',
+  \ 'sql': 'sql-language-server',
   \ }
 
 let g:lsp_enabled_langs = {
@@ -36,6 +37,7 @@ let g:lsp_enabled_langs = {
   \ 'shell': 1,
   \ 'vim': 1,
   \ 'dockerfile': 1,
+  \ 'sql': 1,
   \ }
 
 " TODO : Remember to install the language server for java
