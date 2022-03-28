@@ -57,7 +57,7 @@ function SettingLoader#Load() dict
   endif
 
   if executable("fzf")
-    set rtp+=/usr/local/opt/fzf " Add fzf (fuzzy finder) to the runtime path of vim
+    set rtp+=/opt/homebrew/opt/fzf " Add fzf (fuzzy finder) to the runtime path of vim. This path may vary based on mac chipset (ie M1 or intel)
   endif
 
   let g:netrw_altv           = 1
