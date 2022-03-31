@@ -4,6 +4,11 @@ This repo contains scripts to setup vim for development
 
 ## Getting started
 
+### Absolute requirement
+
+python dylib files must be present in $HOME/lib and point to proper files for python 2 and python 3.
+See, SettingLoader.vim for what those dll files refer to
+
 ### Pre-requirements
     This outlines the setup process for vim in an ubuntu machine
     You can replicate similar steps for mac or other linux flavours
