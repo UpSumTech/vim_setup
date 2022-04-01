@@ -168,4 +168,6 @@ for item in items(g:language_servers)
   endif
 endfor
 
+highlight clear SignColumn " Remove the nasty background highlight from the signs column that gitgutter adds
+
 command -nargs=1 Quit :qa
