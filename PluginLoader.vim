@@ -343,21 +343,26 @@ function s:LoadVimVistaSettings()
   let g:vista_default_executive = 'ctags' " Set the default tag generator for vista
   " Set the executive for some filetypes explicitly
   let g:vista_executive_for = {
-    \ 'python': 'vim_lsp',
     \ 'java': 'vim_lsp',
     \ 'scala': 'vim_lsp',
-    \ 'vim': 'vim_lsp',
-    \ 'ruby': 'vim_lsp',
-    \ 'javascript': 'vim_lsp',
-    \ 'typescript': 'vim_lsp',
     \ 'groovy': 'vim_lsp',
+    \ 'ruby': 'vim_lsp',
+    \ 'python': 'vim_lsp',
+    \ 'rust': 'vim_lsp',
+    \ 'typescript': 'vim_lsp',
+    \ 'javascript': 'vim_lsp',
+    \ 'terraform': 'vim_lsp',
+    \ 'shell': 'vim_lsp',
+    \ 'vim': 'vim_lsp',
     \ 'dockerfile': 'vim_lsp',
-    \ 'bash': 'vim_lsp',
+    \ 'sql': 'vim_lsp',
     \ }
   " Declare the command including the executable and options used to generate ctags output
   let g:vista_ctags_cmd = {
     \ 'go': 'gotags -silent -sort',
     \ }
+  " To enable fzf's preview window set g:vista_fzf_preview.
+  let g:vista_fzf_preview = ['right:50%']
 endfunction
 
 function PluginLoader#Load() dict
