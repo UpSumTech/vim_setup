@@ -30,10 +30,6 @@ function langs#GoConfigLoader#Load() dict
     autocmd FileType go nnoremap <c-l>ar <Plug>(go-callers)
     autocmd FileType go nnoremap <c-l>ac <Plug>(go-callees)
     autocmd FileType go nnoremap <c-l>s :GoDecls <c-r>%<CR>
-
-    " Please open the quickfix window to execute the following
-    autocmd FileType go nnoremap <c-l>gg :VimTool go_get_project_deps<CR><CR>
-    autocmd FileType go nnoremap <c-l>gT :VimTool go_test_project<CR>
   augroup END
 endfunction langs#GoConfigLoader#Load
 

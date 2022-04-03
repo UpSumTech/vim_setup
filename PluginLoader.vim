@@ -192,10 +192,10 @@ endfunction
 function s:LoadFugitiveSettings()
   nnoremap <leader>gs :Gstatus<CR>
   nnoremap <leader>gr :Gremove<CR>
-  nnoremap <leader>gb :Gblame<CR>
+  nnoremap <leader>gb :Git blame<CR>
   nnoremap <leader>gw :Gwrite<CR>
   nnoremap <leader>gc :Gcommit<CR>
-  nnoremap <leader>gd :Gdiff<CR>
+  nnoremap <leader>gd :Git diff<CR>
 endfunction
 
 function s:LoadSplitJoinSettings()
@@ -217,8 +217,6 @@ function s:LoadVimMakeSettings()
   let g:vimmake_path = '~/.vim/tools'
   autocmd BufNewFile,BufRead vimmake.* nested setlocal filetype=sh
   let g:vimmake_mode = {}
-  let g:vimmake_mode['go_get_project_deps'] = 'async'
-  let g:vimmake_mode['go_test_project'] = 'async'
   let g:vimmake_mode['run'] = 'quickfix'
   let g:vimmake_mode['gen_cscope'] = 'async'
   augroup QuickfixStatus
