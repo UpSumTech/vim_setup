@@ -212,19 +212,10 @@ function s:LoadIndentLineSettings()
   let g:indentLine_char = '¦'
 endfunction
 
-function s:LoadVimMakeSettings()
-  let g:vimmake_save = 1
-  let g:vimmake_path = '~/.vim/tools'
-  autocmd BufNewFile,BufRead vimmake.* nested setlocal filetype=sh
-  let g:vimmake_mode = {}
-  let g:vimmake_mode['run'] = 'quickfix'
-  let g:vimmake_mode['gen_cscope'] = 'async'
-  augroup QuickfixStatus
-    au! BufWinEnter quickfix setlocal statusline=%t\ [%{g:vimmake_build_status}]\ %{exists('w:quickfix_title')?\ '\ '.w:quickfix_title\ :\ ''}\ %=%-15(%l,%c%V%)\ %P
-  augroup END
-  noremap <F5> :VimTool run<CR>
-  inoremap <F5> <ESC>:VimTool run<CR>
-  noremap <F6> :VimTool gen_cscope<CR>
+function s:LoadAsyncRunVimSettings()
+  autocmd BufNewFile,BufRead asyncvimtools.* nested setlocal filetype=sh
+  noremap <F5> :AsyncRun -mode=term -pos=bottom -rows=10 ./$HOME/.vim/tools/asyncvimtools.run<CR>
+  noremap <F6> :AsyncRun -mode=term -pos=bottom -rows=10 ./$HOME/.vim/tools/asyncvimtools.cscope<CR>
 endfunction
 
 function s:ToggleNeomake()
@@ -379,7 +370,7 @@ function PluginLoader#Load() dict
   call s:LoadStatusBarSettings()
   call s:LoadGitGutterSettings()
   call s:LoadFugitiveSettings()
-  call s:LoadVimMakeSettings()
+  call s:LoadAsyncRunVimSettings()
   call s:LoadEasyGrepSettings()
   call s:LoadSplitJoinSettings()
   call s:LoadIndentLineSettings()
