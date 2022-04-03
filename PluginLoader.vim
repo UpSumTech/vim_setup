@@ -214,8 +214,8 @@ endfunction
 
 function s:LoadAsyncRunVimSettings()
   autocmd BufNewFile,BufRead asyncvimtools.* nested setlocal filetype=sh
-  noremap <F5> :AsyncRun -mode=term -pos=bottom -rows=10 /usr/bin/env bash $HOME/.vim/tools/asyncvimtools.run<CR>
-  noremap <F6> :AsyncRun -mode=term -pos=bottom -rows=10 /usr/bin/env bash $HOME/.vim/tools/asyncvimtools.cscope<CR>
+  noremap <F5> :AsyncRun -mode=term -pos=bottom -rows=15 /usr/bin/env bash $HOME/.vim/tools/asyncvimtools.run<CR>
+  noremap <F6> :AsyncRun -mode=term -pos=bottom -rows=15 /usr/bin/env bash $HOME/.vim/tools/asyncvimtools.cscope<CR>
 endfunction
 
 function s:ToggleNeomake()
