@@ -14,7 +14,7 @@ let g:language_servers = {
   \ 'scala': 'metals',
   \ 'groovy': 'groovy-language-server',
   \ 'ruby': 'solargraph',
-  \ 'python': 'pyls',
+  \ 'python': 'pylsp-all',
   \ 'rust': 'rust-analyzer',
   \ 'typescript': 'typescript-language-server',
   \ 'terraform': 'terraform-lsp',
