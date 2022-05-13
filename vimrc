@@ -17,7 +17,7 @@ let g:language_servers = {
   \ 'python': 'pylsp-all',
   \ 'rust': 'rust-analyzer',
   \ 'typescript': 'typescript-language-server',
-  \ 'terraform': 'terraform-lsp',
+  \ 'terraform': 'terraform-ls',
   \ 'shell': 'bash-language-server',
   \ 'vim': 'vim-language-server',
   \ 'dockerfile': 'docker-langserver',
