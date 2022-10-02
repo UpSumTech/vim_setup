@@ -89,15 +89,27 @@ function s:OpenBrowser()
 endfunction
 
 function s:CopyLineToClipboard()
-  execute '.w !pbcopy'
+  if g:os == 'Darwin'
+    execute '.w !pbcopy'
+  elseif g:os == 'Linux'
+    execute '.w !xclip -selection clipboard'
+  endif
 endfunction
 
 function s:PasteLineFromClipboard()
   if &paste
-    execute 'r !pbpaste'
+    if g:os == 'Darwin'
+      execute 'r !pbpaste'
+    elseif g:os == 'Linux'
+      execute 'r !xclip -selection clipboard -o'
+    endif
   else
     set paste
-    execute ":r !pbpaste"
+    if g:os == 'Darwin'
+      execute ":r !pbpaste"
+    elseif g:os == 'Linux'
+      execute ':r !xclip -selection clipboard -o'
+    endif
     set nopaste
   endif
 endfunction

@@ -9,6 +9,8 @@ if has('vim_starting')
   endif
 endif
 
+let g:os = substitute(system('uname -s'), '\n', '', '')
+
 let g:language_servers = {
   \ 'java': 'eclipse-jdt-ls',
   \ 'scala': 'metals',
