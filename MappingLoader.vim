@@ -120,9 +120,17 @@ function MappingLoader#Load() dict
   " Create the directory containing the file in the buffer
   nmap <silent> <leader>md :!mkdir -p %:p:h<CR>
 
-  " Create mappings for copy/paste from clipboard
+  " Create mappings to copy/paste single lines to/from clipboard
   nnoremap <leader>lc :PbLineCopy<CR>
   nnoremap <leader>lp :PbLinePaste<CR>
+
+  if g:os == 'Darwin'
+    vnoremap <leader>lc :w !pbcopy<CR><CR>
+    vnoremap <leader>lp :r !pbpaste<CR><CR>
+  elseif g:os == 'Linux'
+    vnoremap <leader>lc :w !xclip -i -sel c<CR><CR>
+    vnoremap <leader>lp :r !xclip -o -sel c<CR><CR>
+  endif
 
   " Create mappings for opening console
   nnoremap <leader>po :OpenConsole<CR><CR>
