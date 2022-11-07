@@ -121,6 +121,7 @@ function s:LoadLanguageConfigs()
     \ "ClojureConfigLoader",
     \ "PureScriptHaskellConfigLoader",
     \ "RustConfigLoader",
+    \ "JsonnetConfigLoader",
   \ ]
 
   for languageLoader in languageLoaders
