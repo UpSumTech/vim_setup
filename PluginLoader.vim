@@ -356,6 +356,22 @@ function s:LoadVimVistaSettings()
   let g:vista_fzf_preview = ['right:50%']
 endfunction
 
+function s:LoadVimTypeScriptSettings()
+  let g:typescript_compiler_binary = 'tsc' " Compiler settings for makeprg and errorfmt in typescript files
+  let g:typescript_compiler_options = '--build --incremental --verbose' " Extra compiler options for typescript files
+  let g:typescript_ignore_typescriptdoc = 1 " Ignore typescript docs in syntax highlighting
+  let g:typescript_ignore_browserwords = 1 " Ignore browser keywords like window in syntax highlighting
+endfunction
+
+function s:LoadVimJsTemplatePrettySettings()
+  if exists('g:loaded_js_pretty_template')
+    call jspretmpl#register_tag('gql', 'graphql')
+    autocmd FileType javascript JsPreTmpl
+    autocmd FileType javascript.jsx JsPreTmpl
+    autocmd FileType typescript JsPreTmpl
+  endif
+endfunction
+
 function PluginLoader#Load() dict
   call s:BundlePlugins()
   call s:LoadFileBrowserSettings()
@@ -381,6 +397,8 @@ function PluginLoader#Load() dict
   call s:LoadTabAutoCompletion()
   call s:LoadVimAirlineSettings()
   call s:LoadVimVistaSettings()
+  call s:LoadVimTypeScriptSettings()
+  call s:LoadVimJsTemplatePrettySettings()
   return
 endfunction PluginLoader#Load
 

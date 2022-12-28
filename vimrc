@@ -24,6 +24,7 @@ let g:language_servers = {
   \ 'vim': 'vim-language-server',
   \ 'dockerfile': 'docker-langserver',
   \ 'sql': 'sql-language-server',
+  \ 'json': 'vscode-json-language-server',
   \ }
 
 let g:lsp_enabled_langs = {
@@ -40,6 +41,7 @@ let g:lsp_enabled_langs = {
   \ 'vim': 1,
   \ 'dockerfile': 1,
   \ 'sql': 1,
+  \ 'json': 1,
   \ }
 
 " TODO : Remember to install the language server for java
