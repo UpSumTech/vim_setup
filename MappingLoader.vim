@@ -150,6 +150,9 @@ function MappingLoader#Load() dict
 
   " Find for a word across the project
   nnoremap <leader>fp :ProjectFind<space>
+
+  " Open tagbar
+  nmap <F8> :TagbarToggle<CR>
 endfunction MappingLoader#Load
 
 function MappingLoader#New()

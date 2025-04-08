@@ -73,3 +73,4 @@ jparise/vim-graphql=https://github.com/jparise/vim-graphql
 google/vim-jsonnet=https://github.com/google/vim-jsonnet
 Quramy/vim-js-pretty-template=https://github.com/Quramy/vim-js-pretty-template.git
 github/copilot.vim=https://github.com/github/copilot.vim.git
+jstemmer/gotags=https://github.com/jstemmer/gotags.git

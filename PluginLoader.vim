@@ -329,6 +329,36 @@ function s:LoadVimAirlineSettings()
   let g:airline#extensions#tabline#formatter = 'unique_tail_improved' " Displays filenames in the tabline
 endfunction
 
+function s:LoadVimGotagsSettings()
+  let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+      \ 'p:package',
+      \ 'i:imports:1',
+      \ 'c:constants',
+      \ 'v:variables',
+      \ 't:types',
+      \ 'n:interfaces',
+      \ 'w:fields',
+      \ 'e:embedded',
+      \ 'm:methods',
+      \ 'r:constructor',
+      \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+      \ 't' : 'ctype',
+      \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+      \ 'ctype' : 't',
+      \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+    \ }
+endfunction
+
 function s:LoadVimVistaSettings()
   let g:vista_icon_indent = ["▸ ", ""] " How each level is indented and what to prepend
   let g:vista_default_executive = 'ctags' " Set the default tag generator for vista
@@ -389,6 +419,7 @@ function PluginLoader#Load() dict
   endif
   call s:LoadTabAutoCompletion()
   call s:LoadVimAirlineSettings()
+  call s:LoadVimGotagsSettings()
   call s:LoadVimVistaSettings()
   call s:LoadVimJsTemplatePrettySettings()
   return
