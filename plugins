@@ -71,5 +71,5 @@ uarun/vim-protobuf=https://github.com/uarun/vim-protobuf.git
 rust-lang/rust.vim=https://github.com/rust-lang/rust.vim
 jparise/vim-graphql=https://github.com/jparise/vim-graphql
 google/vim-jsonnet=https://github.com/google/vim-jsonnet
-leafgarland/typescript-vim=https://github.com/leafgarland/typescript-vim
-Quramy/vim-js-pretty-template=https://github.com/Quramy/vim-js-pretty-template
+Quramy/vim-js-pretty-template=https://github.com/Quramy/vim-js-pretty-template.git
+github/copilot.vim=https://github.com/github/copilot.vim.git
