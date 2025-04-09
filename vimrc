@@ -15,6 +15,7 @@ let g:language_servers = {
   \ 'java': 'eclipse-jdt-ls',
   \ 'scala': 'metals',
   \ 'groovy': 'groovy-language-server',
+  \ 'go': 'gopls',
   \ 'ruby': 'solargraph',
   \ 'python': 'pylsp-all',
   \ 'rust': 'rust-analyzer',
@@ -25,13 +26,13 @@ let g:language_servers = {
   \ 'dockerfile': 'docker-langserver',
   \ 'sql': 'sql-language-server',
   \ 'json': 'vscode-json-language-server',
-  \ 'yaml': 'yaml-language-server',
   \ }
 
 let g:lsp_enabled_langs = {
   \ 'java': 1,
   \ 'scala': 1,
   \ 'groovy': 1,
+  \ 'go': 1,
   \ 'ruby': 1,
   \ 'python': 1,
   \ 'rust': 1,
@@ -43,7 +44,6 @@ let g:lsp_enabled_langs = {
   \ 'dockerfile': 1,
   \ 'sql': 1,
   \ 'json': 1,
-  \ 'yaml': 1,
   \ }
 
 " TODO : Remember to install the language server for java
