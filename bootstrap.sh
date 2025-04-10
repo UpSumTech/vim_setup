@@ -114,6 +114,9 @@ PostInstallInstructions() {
     :LspInstallServer bash-language-server
     :LspInstallServer vim-language-server
     :LspInstallServer docker-langserver
+
+  >> Install gopls manually
+    go install golang.org/x/tools/gopls@latest
   "
 }
 
