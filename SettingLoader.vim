@@ -68,7 +68,7 @@ function SettingLoader#Load() dict
   let g:netrw_silent         = 1
   let g:netrw_special_syntax = 1
 
-  set pythonthreedll=~/lib/libpython3.10.dylib
+  set pythonthreedll=~/lib/libpython3.13.dylib
   set pythondll=~/lib/libpython2.7.dylib
 
   if has("persistent_undo")
