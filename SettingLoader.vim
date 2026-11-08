@@ -68,7 +68,9 @@ function SettingLoader#Load() dict
   let g:netrw_silent         = 1
   let g:netrw_special_syntax = 1
 
-  set pythonthreedll=~/lib/libpython3.13.dylib
+  if g:os ==# 'Darwin'
+    set pythonthreedll=~/lib/libpython3.13.dylib
+  endif
 
   if has("persistent_undo")
     call system('mkdir -p ~/.undodir')
