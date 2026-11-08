@@ -212,37 +212,6 @@ function s:LoadIndentLineSettings()
   let g:indentLine_char = '¦'
 endfunction
 
-function s:LoadAsyncRunVimSettings()
-  autocmd BufNewFile,BufRead asyncvimtools.* nested setlocal filetype=sh
-  noremap <F5> :AsyncRun -mode=term -pos=bottom -rows=15 /usr/bin/env bash $HOME/.vim/tools/asyncvimtools.run<CR>
-  noremap <F6> :AsyncRun -mode=term -pos=bottom -rows=15 /usr/bin/env bash $HOME/.vim/tools/asyncvimtools.cscope<CR>
-endfunction
-
-function s:ToggleNeomake()
-  let l:quickfixWindow = filter(tabpagebuflist(), 'getbufvar(v:val, "&buftype") is# "quickfix"')
-  if !(exists('g:is_location_list_open'))
-    let g:is_location_list_open = 0
-  endif
-
-  if empty(l:quickfixWindow) && !g:is_location_list_open
-    :execute "Neomake"
-    let g:is_location_list_open = 1
-  elseif !empty(l:quickfixWindow) && !g:is_location_list_open
-    :execute "NeomakeCancelJobs"
-    let g:is_location_list_open = 0
-  else
-    :execute "NeomakeCancelJobs"
-    let g:is_location_list_open = 0
-    lclose
-  endif
-endfunction
-
-function s:LoadNeomakeSettings()
-  let g:neomake_open_list = 2
-  command! TNeomake call <SID>ToggleNeomake()
-  nnoremap <c-m> :TNeomake<CR>
-endfunction
-
 function s:LoadEasyGrepSettings()
   let g:EasyGrepCommand=1 " Use grepprg for searching
   let g:EasyGrepMode=0 " Search all files
@@ -365,8 +334,6 @@ function s:LoadVimVistaSettings()
   " Set the executive for some filetypes explicitly
   let g:vista_executive_for = {
     \ 'java': 'vim_lsp',
-    \ 'scala': 'vim_lsp',
-    \ 'groovy': 'vim_lsp',
     \ 'ruby': 'vim_lsp',
     \ 'python': 'vim_lsp',
     \ 'rust': 'vim_lsp',
@@ -409,7 +376,6 @@ function PluginLoader#Load() dict
   call s:LoadStatusBarSettings()
   call s:LoadGitGutterSettings()
   call s:LoadFugitiveSettings()
-  call s:LoadAsyncRunVimSettings()
   call s:LoadEasyGrepSettings()
   call s:LoadSplitJoinSettings()
   call s:LoadIndentLineSettings()
@@ -431,7 +397,6 @@ function PluginLoader#AfterLoad() dict
   syntax enable
   filetype plugin indent on
   color solarized
-  call s:LoadNeomakeSettings()
   return
 endfunction PluginLoader#AfterLoad
 

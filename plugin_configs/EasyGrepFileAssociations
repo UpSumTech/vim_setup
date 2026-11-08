@@ -69,5 +69,4 @@ Xsd=*.xsd <XML>
 Xslt=*.xsl *.xslt <XML>
 Yacc=*.y *.yy
 Yaml=*.yaml *.yml
-Groovy=*.groovy *.gsp *.gradle <Java> <Properties>
 Properties=*.properties

@@ -108,8 +108,6 @@ PostInstallInstructions() {
     :LspInstallServer solargraph
     :LspInstallServer pyls
     :LspInstallServer terraform-lsp
-    :LspInstallServer metals
-    :LspInstallServer groovy-language-server
     :LspInstallServer typescript-language-server
     :LspInstallServer bash-language-server
     :LspInstallServer vim-language-server

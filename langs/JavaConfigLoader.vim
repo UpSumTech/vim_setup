@@ -1,9 +1,8 @@
-function langs#JavaScalaConfigLoader#Load() dict
-  augroup Java_Scala
+function langs#JavaConfigLoader#Load() dict
+  augroup Java
     autocmd!
-    autocmd FileType java,scala nested let b:maplocalleader="\\"
-    autocmd FileType java,scala nested let b:loaded_delimitMate = 1
-    autocmd FileType scala nested let g:scala_scaladoc_indent = 1
+    autocmd FileType java nested let b:maplocalleader="\\"
+    autocmd FileType java nested let b:loaded_delimitMate = 1
     autocmd FileType xml nested setlocal omnifunc=xmlcomplete#CompleteTags
 
     " Enable javacomplete2 setings if the corresponding config var is set
@@ -24,11 +23,11 @@ function langs#JavaScalaConfigLoader#Load() dict
 
     " Reminder to use C-x C-o for omni-completion
   augroup END
-endfunction langs#JavaScalaConfigLoader#load
+endfunction langs#JavaConfigLoader#Load
 
-function langs#JavaScalaConfigLoader#New()
+function langs#JavaConfigLoader#New()
   let Retval = {
-    \ 'load' : function('langs#JavaScalaConfigLoader#Load'),
+    \ 'load' : function('langs#JavaConfigLoader#Load'),
   \ }
   return Retval
-endfunction langs#JavaScalaConfigLoader#New
+endfunction langs#JavaConfigLoader#New

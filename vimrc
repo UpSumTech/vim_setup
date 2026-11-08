@@ -13,8 +13,6 @@ let g:os = substitute(system('uname -s'), '\n', '', '')
 
 let g:language_servers = {
   \ 'java': 'eclipse-jdt-ls',
-  \ 'scala': 'metals',
-  \ 'groovy': 'groovy-language-server',
   \ 'go': 'gopls',
   \ 'ruby': 'solargraph',
   \ 'python': 'pylsp-all',
@@ -30,8 +28,6 @@ let g:language_servers = {
 
 let g:lsp_enabled_langs = {
   \ 'java': 1,
-  \ 'scala': 1,
-  \ 'groovy': 1,
   \ 'go': 1,
   \ 'ruby': 1,
   \ 'python': 1,
@@ -115,7 +111,7 @@ endfunction
 function s:LoadLanguageConfigs()
   let languageLoaders=[
     \ "ClangConfigLoader",
-    \ "JavaScalaConfigLoader",
+    \ "JavaConfigLoader",
     \ "GoConfigLoader",
     \ "TerraformConfigLoader",
     \ "JsCssHtmlConfigLoader",
@@ -123,7 +119,6 @@ function s:LoadLanguageConfigs()
     \ "PythonConfigLoader",
     \ "RubyConfigLoader",
     \ "ClojureConfigLoader",
-    \ "PureScriptHaskellConfigLoader",
     \ "RustConfigLoader",
     \ "JsonnetConfigLoader",
   \ ]
